@@ -8,6 +8,8 @@ URL: https://github.com/dd2480-group8/jadx
 
 A CLI tool and GUI tool to generate  Java source code from Android DEX and APK files. A decompiler basically.
 
+**We are focusing on the core module, at /jadx-core with 38K LOC."**
+
 ## Onboarding experience
 
 The project builds easily and as documented. It uses gradle which is self-contained with its own wrapper. Since it's a Java project, it requires a JDK (at least version 8). Gradle will run the tests when running **./gradle dist** and **./gradle build**, as instructed in the README.md. The project builds and tests without any errors. It is also easy to list all the possible build actions with **./gradle tasks**. It worked well on both Windows and Linux. 
