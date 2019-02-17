@@ -42,6 +42,20 @@ File column contains the class, method name, line numbers (interval) of the code
 | 25 | 74 | LoopRegionVisitor::checkArrayForEach@128-206@[./src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java) |
 | 25 | 80 | ProcessVariables::visit@170-264@[./src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) |
 
+**Calculations by Simon**
+
+Remember to count inline conditionals (foo ? ... : ...).
+
+| File | Complexity (Conditionals, Loops) | Description |
+|---|---|---|
+| processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | 34 (26, 7) |  | 
+| visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | 33 (26, 6) |  |
+| extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | 0 |  |
+| process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | 0 |  |
+| mergeInternal@481-549@[ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) | 0 |  |
+| checkArrayForEach@128-206@[LoopRegionVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java) | 0 |  |
+| visit@170-264@[ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) | 0 |  |
+
 ## Coverage
 
 ### Tools
