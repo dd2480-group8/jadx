@@ -27,7 +27,7 @@ is not easily possible: ten complex functions)?
 
 **Results from Lizard**
 
-File column contains the class, method name, line numbers (interval) of the code and source file path in the core module (/jadx-core). 
+File column contains the class, method name, line numbers (interval) of the code and source file path in the core module (/jadx-core). This output is from running: **lizard -s cyclomatic_complexity**.
 
 | Complexity | LOC | File  | 
 |---|---|---|
