@@ -25,6 +25,23 @@ is not easily possible: ten complex functions)?
 4. Are exceptions taken into account in the given measurements?
 5. Is the documentation clear w.r.t. all the possible outcomes?
 
+**Results from Lizard**
+
+File column contains the class, method name, line numbers (interval) of the code and source file path in the core module (/jadx-core). 
+
+| Complexity | LOC | File  | 
+|---|---|---|
+| 222 | 407 | InsnDecoder::decode@86-583@./src/main/java/jadx/core/dex/instructions/InsnDecoder.java |
+| 60 | 255 | InsnGen::makeInsnBody@233-523@./src/main/java/jadx/core/codegen/InsnGen.java |
+| 34 | 125 | RegionMaker::processSwitch@700-844@./src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java |
+| 33 | 105 | EnumVisitor::visit@41-161@./src/main/java/jadx/core/dex/visitors/EnumVisitor.java |
+| 32 | 39 | TestConditions15::TestCls::test@15-53@./src/test/java/jadx/tests/integration/conditions/TestConditions15.java |
+| 31 | 119 | BlockFinallyExtract::extractFinally@117-254@./src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java |
+| 31 | 98 | PostTypeInference::process@21-131@./src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java |
+| 26 | 67 | ArgType::mergeInternal@481-549@./src/main/java/jadx/core/dex/instructions/args/ArgType.java |
+| 25 | 74 | LoopRegionVisitor::checkArrayForEach@128-206@./src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java |
+| 25 | 80 | ProcessVariables::visit@170-264@./src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java |
+
 ## Coverage
 
 ### Tools
