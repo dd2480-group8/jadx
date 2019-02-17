@@ -31,30 +31,28 @@ File column contains the class, method name, line numbers (interval) of the code
 
 | Complexity | LOC | File  | 
 |---|---|---|
-| 222 | 407 | InsnDecoder::decode@86-583@[./src/main/java/jadx/core/dex/instructions/InsnDecoder.java](./jadx-core/src/main/java/jadx/core/dex/instructions/InsnDecoder.java) |
-| 60 | 255 | InsnGen::makeInsnBody@233-523@[./src/main/java/jadx/core/codegen/InsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) |
-| 34 | 125 | RegionMaker::processSwitch@700-844@[./src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) |
-| 33 | 105 | EnumVisitor::visit@41-161@[./src/main/java/jadx/core/dex/visitors/EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) |
-| 32 | 39 | TestConditions15::TestCls::test@15-53@[./src/test/java/jadx/tests/integration/conditions/TestConditions15.java](./jadx-core/src/test/java/jadx/tests/integration/conditions/TestConditions15.java) |
-| 31 | 119 | BlockFinallyExtract::extractFinally@117-254@[./src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) |
-| 31 | 98 | PostTypeInference::process@21-131@[./src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) |
-| 26 | 67 | ArgType::mergeInternal@481-549@[./src/main/java/jadx/core/dex/instructions/args/ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) |
-| 25 | 74 | LoopRegionVisitor::checkArrayForEach@128-206@[./src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java) |
-| 25 | 80 | ProcessVariables::visit@170-264@[./src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) |
+| 222 | 407 | InsnDecoder::decode@86-583@[InsnDecoder.java](./jadx-core/src/main/java/jadx/core/dex/instructions/InsnDecoder.java) |
+| 60 | 255 | InsnGen::makeInsnBody@233-523@[nsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) |
+| 34 | 125 | RegionMaker::processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) |
+| 33 | 105 | EnumVisitor::visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) |
+| 32 | 39 | TestConditions15::TestCls::test@15-53@[TestConditions15.java](./jadx-core/src/test/java/jadx/tests/integration/conditions/TestConditions15.java) |
+| 31 | 119 | BlockFinallyExtract::extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) |
+| 31 | 98 | PostTypeInference::process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) |
+| 26 | 67 | ArgType::mergeInternal@481-549@[ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) |
+| 25 | 74 | LoopRegionVisitor::checkArrayForEach@128-206@[LoopRegionVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java) |
+| 25 | 80 | ProcessVariables::visit@170-264@[ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) |
 
 **Calculations by Simon**
 
-Remember to count inline conditionals (foo ? ... : ...).
+Remember to count inline conditionals (foo ? ... : ...). Conditionals are within if-statements (where ... && ... is counted as separate conditionals), loops are for-loops and while-loops and cases are within switch statements.
 
-| File | Complexity (Conditionals, Loops) | Description |
+| File | Complexity (Conditionals, Loops, Cases) | Description |
 |---|---|---|
-| processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | 34 (26, 7) |  | 
-| visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | 33 (26, 6) |  |
-| extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | 0 |  |
-| process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | 0 |  |
-| mergeInternal@481-549@[ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) | 0 |  |
-| checkArrayForEach@128-206@[LoopRegionVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java) | 0 |  |
-| visit@170-264@[ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) | 0 |  |
+| processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | 34 (26, 7, 0) |  | 
+| visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | 33 (26, 6, 0) |  |
+| extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | 31 (23, 7, 0) |  |
+| process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | 31 (17, 3, 10) |  |
+| mergeInternal@481-549@[ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) | 26 (24, 1, 0) |  |
 
 ## Coverage
 
