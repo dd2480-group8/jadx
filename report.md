@@ -6,19 +6,15 @@ has to be delivered in a standard, cross-platform format.
 
 ## Project
 
-Name:
+Name: JADX
 
-URL:
+URL: https://github.com/dd2480-group8/jadx
 
-One or two sentences describing it
+A CLI tool and GUI tool to generate  Java source code from Android DEX and APK files. A decompiler basically.
 
 ## Onboarding experience
 
-Did it build as documented?
-    
-(See the assignment for details; if everything works out of the box,
-there is no need to write much here.)
-
+The project builds easily and as documented. It uses gradle which is self-contained with its own wrapper. Since it's a Java project, it requires a JDK (at least version 8). Gradle will run the tests when running **./gradle dist** and **./gradle build**, as instructed in the README.md. The project builds and tests without any errors. It is also easy to list all the possible build actions with **./gradle tasks**. It worked well on both Windows and Linux. 
 
 ## Complexity
 
