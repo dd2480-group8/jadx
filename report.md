@@ -31,7 +31,7 @@ File column contains the class, method name, line numbers (interval) of the code
 
 | Complexity | LOC | File | Purpose |
 |---|---|---|---|
-| 222 | 407 | decode@86-583@[InsnDecoder.java](./jadx-core/src/main/java/jadx/core/dex/instructions/InsnDecoder.java) |  |
+| 222 | 407 | decode@86-583@[InsnDecoder.java](./jadx-core/src/main/java/jadx/core/dex/instructions/InsnDecoder.java) | Decodes a binary instruction, by looking at the OP code and creating a new instruction object with parameters parsed. |
 | 60 | 255 | makeInsnBody@233-523@[nsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) |  |
 | 34 | 125 | processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) |  |
 | 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) |  |
