@@ -8,7 +8,7 @@ URL: https://github.com/dd2480-group8/jadx
 
 A CLI tool and GUI tool to generate  Java source code from Android DEX and APK files. A decompiler basically.
 
-**We are focusing on the core module, at /jadx-core with 38K LOC."**
+**We are focusing on the core module, at /jadx-core with 38K LOC.**
 
 ## Onboarding experience
 
