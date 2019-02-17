@@ -16,8 +16,8 @@ The project builds easily and as documented. It uses gradle which is self-contai
 
 ## Complexity
 
-1. What are your results for the ten most complex functions? (If ranking is not easily possible: ten complex functions)? **Answer: See table below.**.
-   * Did all tools/methods get the same result? **Answer: Yes, once we didn't miss anything while counting the complexity by hand. We used Lizard to compuate the complexity as well. Our calculations are the same.**.
+1. What are your results for the ten most complex functions? (If ranking is not easily possible: ten complex functions)? **Answer: See table below.**
+   * Did all tools/methods get the same result? **Answer: Yes, once we didn't miss anything while counting the complexity by hand. We used Lizard to compuate the complexity as well. Our calculations are the same.**
    * Are the results clear? **Answer: Yes. Especially when looking into the most complex ones.**
 2. Are the functions just complex, or also long? **Answer: Some of them are. Generally though they are very nested with branches.**
 3. What is the purpose of the functions? **Answer: See table below. Some of them are related to the high CC. With many switch cases, because it needs to handle many different types of scenarios (OP codes). Although it could be simplified.**
