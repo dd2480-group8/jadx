@@ -16,14 +16,13 @@ The project builds easily and as documented. It uses gradle which is self-contai
 
 ## Complexity
 
-1. What are your results for the ten most complex functions? (If ranking
-is not easily possible: ten complex functions)?
-   * Did all tools/methods get the same result?
-   * Are the results clear?
-2. Are the functions just complex, or also long?
-3. What is the purpose of the functions?
-4. Are exceptions taken into account in the given measurements?
-5. Is the documentation clear w.r.t. all the possible outcomes?
+1. What are your results for the ten most complex functions? (If ranking is not easily possible: ten complex functions)? **Answer: See table below.**.
+   * Did all tools/methods get the same result? **Answer: Yes, once we didn't miss anything while counting the complexity by hand.**.
+   * Are the results clear? **Answer: Yes. Especially when looking into the most complex ones.**
+2. Are the functions just complex, or also long? **Answer: Some of them are. Generally though they are very nested with branches.**
+3. What is the purpose of the functions? **Answer: See table below.**
+4. Are exceptions taken into account in the given measurements? **Answer: ?**
+5. Is the documentation clear w.r.t. all the possible outcomes? **Answer: Not all of the functions. Some are.**
 
 **Results from Lizard**
 
