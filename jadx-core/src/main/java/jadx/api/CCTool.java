@@ -59,6 +59,13 @@ public final class CCTool {
         // is to set that boolean to true if the branch is visited.
         cc = new HashMap<String, HashMap<Integer, Boolean>>();
 
+        // makeInsnBody in InsnGen 
+        HashMap<Integer, Boolean> makeInsnBodyMap = new HashMap<>();
+        for (int i = 0; i < 69; i++) {
+            makeInsnBodyMap.put(i, false);
+        }
+        cc.put("makeInsnBody@InsnGen", makeInsnBodyMap);   
+
         // processSwitch in RegionMaker
         HashMap<Integer, Boolean> processSwitchMap = new HashMap<>();
         for (int i = 0; i < 48; i++) {
@@ -81,12 +88,21 @@ public final class CCTool {
         }
         cc.put("extractFinally@BlockFinallyExtract", extractFinallyMap);
 
+
         // mergeInternal in ArgType
         HashMap<Integer, Boolean> mergeInternalMap = new HashMap<>();
         for (int i = 0; i < 36; i++) {
             mergeInternalMap.put(i, false);
         }
         cc.put("mergeInternal@ArgType", mergeInternalMap);
+
+        // visit in ProcessVariables
+        HashMap<Integer, Boolean> visitProcVarsMap = new HashMap<>();
+        for (int i = 0; i < 31; i++) {
+            visitProcVarsMap.put(i, false);
+        }
+        cc.put("visit@ProcessVariables", visitProcVarsMap);
+
 
         initialized = true;
     }

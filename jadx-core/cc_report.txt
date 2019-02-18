@@ -1,5 +1,76 @@
 -----------------------------------------------------------
 Code Coverage Report
+Method: makeInsnBody@InsnGen: 65.21739130434783
+	Branch: 0: Covered
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Covered
+	Branch: 8: Covered
+	Branch: 9: Covered
+	Branch: 10: Missed
+	Branch: 11: Covered
+	Branch: 12: Covered
+	Branch: 13: Covered
+	Branch: 14: Covered
+	Branch: 15: Covered
+	Branch: 16: Covered
+	Branch: 17: Covered
+	Branch: 18: Covered
+	Branch: 19: Covered
+	Branch: 20: Missed
+	Branch: 21: Covered
+	Branch: 22: Missed
+	Branch: 23: Covered
+	Branch: 24: Missed
+	Branch: 25: Covered
+	Branch: 26: Covered
+	Branch: 27: Covered
+	Branch: 28: Covered
+	Branch: 29: Missed
+	Branch: 30: Covered
+	Branch: 31: Covered
+	Branch: 32: Covered
+	Branch: 33: Covered
+	Branch: 34: Covered
+	Branch: 35: Covered
+	Branch: 36: Covered
+	Branch: 37: Covered
+	Branch: 38: Covered
+	Branch: 39: Covered
+	Branch: 40: Covered
+	Branch: 41: Covered
+	Branch: 42: Covered
+	Branch: 43: Covered
+	Branch: 44: Covered
+	Branch: 45: Covered
+	Branch: 46: Missed
+	Branch: 47: Missed
+	Branch: 48: Missed
+	Branch: 49: Missed
+	Branch: 50: Missed
+	Branch: 51: Missed
+	Branch: 52: Covered
+	Branch: 53: Covered
+	Branch: 54: Covered
+	Branch: 55: Covered
+	Branch: 56: Missed
+	Branch: 57: Missed
+	Branch: 58: Missed
+	Branch: 59: Missed
+	Branch: 60: Missed
+	Branch: 61: Missed
+	Branch: 62: Missed
+	Branch: 63: Missed
+	Branch: 64: Missed
+	Branch: 65: Missed
+	Branch: 66: Missed
+	Branch: 67: Missed
+	Branch: 68: Missed
+
 Method: processSwitch@RegionMaker: 77.08333333333334
 	Branch: 0: Covered
 	Branch: 1: Covered
@@ -180,5 +251,38 @@ Method: visit@EnumVisitor: 77.5
 	Branch: 37: Covered
 	Branch: 38: Covered
 	Branch: 39: Covered
+
+Method: visit@ProcessVariables: 90.32258064516128
+	Branch: 0: Covered
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Missed
+	Branch: 8: Covered
+	Branch: 9: Covered
+	Branch: 10: Covered
+	Branch: 11: Covered
+	Branch: 12: Covered
+	Branch: 13: Covered
+	Branch: 14: Covered
+	Branch: 15: Covered
+	Branch: 16: Covered
+	Branch: 17: Covered
+	Branch: 18: Covered
+	Branch: 19: Covered
+	Branch: 20: Covered
+	Branch: 21: Covered
+	Branch: 22: Covered
+	Branch: 23: Missed
+	Branch: 24: Missed
+	Branch: 25: Covered
+	Branch: 26: Covered
+	Branch: 27: Covered
+	Branch: 28: Covered
+	Branch: 29: Covered
+	Branch: 30: Covered
 
 -----------------------------------------------------------
