@@ -74,7 +74,12 @@ Documentation for the induced outcome of branches in the functions are rather no
 
 ### Tools
 
-As instructed in the assignment, we implemented a manual coverage tool in the code. It was pretty tricky due to the size of the project and the nature of how the tests are run. Because the project is dealing with decompilation, much of the tests are run on code that is compiled. There was no entry point for all the tests, so the instrumentation had to be enforced in many places. The tool itself is small and can be seen here: [CCTool](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java).
+As instructed in the assignment, we implemented a manual coverage tool in the code. It was pretty tricky due to the size of the project and the nature of how the tests are run. Because the project is dealing with decompilation, much of the tests are run on code that is compiled. There was no entry point for all the tests, so the instrumentation had to be enforced in many places. The tool itself is small and can be seen here: [CCTool](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java). The tool is used in the following manner.
+
+1. Introduce branch flags in the method that we want to measure the code coverage for. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709).
+1. Count the number of flags and allocate a HashMap for the flags in the CCTool **initialize** method. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62).
+1. Run **./gradle build**.
+1. View the **cc_report.txt** file in the jadx-core folder. Example [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt).
 
 In addition to our manual tool. The project runs Codecov which displays the code coverage as well. This can be explored here: [https://codecov.io/gh/skylot/jadx](https://codecov.io/gh/skylot/jadx). Our tool is a bit more granular as we measure individual methods, while Codecov measures the entire source file. However, both our tool and Codecov will discover areas that are not covered by tests.
 
