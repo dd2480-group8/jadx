@@ -40,35 +40,28 @@ public class EnumVisitor extends AbstractVisitor {
 
 	@Override
 	public boolean visit(ClassNode cls) throws JadxException {
-		System.out.println("Test: 0");
 		if (!cls.isEnum()) {
-		System.out.println("Test: 1");
 			CCTool.set("visit@EnumVisitor", 0);
 			return true;
 		}
 		else {
-		System.out.println("Test: 2");
 			CCTool.set("visit@EnumVisitor", 1);
 		}
 		// search class init method
 		MethodNode staticMethod = null;
 		for (MethodNode mth : cls.getMethods()) {
-		System.out.println("Test: 3");
 			CCTool.set("visit@EnumVisitor", 2);
 			MethodInfo mi = mth.getMethodInfo();
 			if (mi.isClassInit()) {
-		System.out.println("Test: 6");
 				CCTool.set("visit@EnumVisitor", 3);
 				staticMethod = mth;
 				break;
 			}
 			else {
-		System.out.println("Test: 5");
 				CCTool.set("visit@EnumVisitor", 4);
 			}
 		}
 		if (staticMethod == null) {
-		System.out.println("Test: 4");
 			CCTool.set("visit@EnumVisitor", 5);
 			ErrorsCounter.classWarn(cls, "Enum class init method not found");
 			return true;
