@@ -214,4 +214,37 @@ Method: visit@EnumVisitor: 82.5
 	Branch: 38: Covered
 	Branch: 39: Covered
 
+Method: visit@ProcessVariables: 90.32258064516128
+	Branch: 0: Covered
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Missed
+	Branch: 8: Covered
+	Branch: 9: Covered
+	Branch: 10: Covered
+	Branch: 11: Covered
+	Branch: 12: Covered
+	Branch: 13: Covered
+	Branch: 14: Covered
+	Branch: 15: Covered
+	Branch: 16: Covered
+	Branch: 17: Covered
+	Branch: 18: Covered
+	Branch: 19: Covered
+	Branch: 20: Covered
+	Branch: 21: Covered
+	Branch: 22: Covered
+	Branch: 23: Missed
+	Branch: 24: Missed
+	Branch: 25: Covered
+	Branch: 26: Covered
+	Branch: 27: Covered
+	Branch: 28: Covered
+	Branch: 29: Covered
+	Branch: 30: Covered
+
 -----------------------------------------------------------
