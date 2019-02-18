@@ -76,6 +76,8 @@ Documentation for the induced outcome of branches in the functions are rather no
 
 As instructed in the assignment, we implemented a manual coverage tool in the code. It was pretty tricky due to the size of the project and the nature of how the tests are run. Because the project is dealing with decompilation, much of the tests are run on code that is compiled. There was no entry point for all the tests, so the instrumentation had to be enforced in many places. The tool itself is small and can be seen here: [CCTool](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java). The tool is used in the following manner.
 
+Additionally, there was no ability to know when all the tests have been run. So instrumention had to be put in to store the intermediate results between test runs at the end of every test (**printReport**). A way to fix this would be to upgrade the JUnit framework to a later version, which has a richer support for annotations (e.g. @AfterAllMethods).
+
 1. Introduce branch flags in the method that we want to measure the code coverage for. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709).
 1. Count the number of flags and allocate a HashMap for the flags in the CCTool **initialize** method. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62).
 1. Save the measurements after each test (console and file). Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/test/java/jadx/tests/integration/enums/TestSwitchOverEnum2.java#L58](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/test/java/jadx/tests/integration/enums/TestSwitchOverEnum2.java#L58).
@@ -86,16 +88,11 @@ In addition to our manual tool. The project runs Codecov which displays the code
 
 ### DYI
 
-Show a patch that show the instrumented code in main (or the unit
-test setup), and the ten methods where branch coverage is measured.
+The patch is easiest displayed by multiple diff commands. 
+1. Display the CCTool itself (which is self-initialized upon invokation): **git diff master cc jadx-core/src/main/java/jadx/api/CCTool.java**
+1. Display the instrumented code in a unit test: **git diff master cc jadx-core/src/test/java/jadx/tests/integration/enums/TestEnums.java**. 1. Display the instrumented code in the function (for reference): **git diff master cc jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java**.
 
-The patch is probably too long to be copied here, so please add
-the git command that is used to obtain the patch instead:
-
-git diff ...
-
-What kinds of constructs does your tool support, and how accurate is
-its output?
+Our tool supports measuring any branch where a flag is put in (with a unique branch ID). It is heavily dependant on the programmers accuracy, to not miss branches (such as inline conditionals). The output seems very accurate when comparing with the results from the Codecov tool.
 
 ### Evaluation
 
