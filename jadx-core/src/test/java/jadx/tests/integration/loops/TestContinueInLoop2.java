@@ -20,6 +20,7 @@ import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestContinueInLoop2 extends IntegrationTest {
 

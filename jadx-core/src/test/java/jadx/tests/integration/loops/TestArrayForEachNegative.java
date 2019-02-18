@@ -1,6 +1,7 @@
 package jadx.tests.integration.loops;
 
 import org.junit.Test;
+import jadx.api.CCTool;
 
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
@@ -51,5 +52,7 @@ public class TestArrayForEachNegative extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, not(containsString(":")));
+
+		CCTool.printReport();
 	}
 }

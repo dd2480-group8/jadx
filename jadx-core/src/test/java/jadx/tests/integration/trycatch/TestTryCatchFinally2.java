@@ -6,6 +6,7 @@ import java.io.OutputStream;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.clsp.NClass;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
@@ -56,5 +57,6 @@ public class TestTryCatchFinally2 extends IntegrationTest {
 //		assertThat(code, countString(2, "for (NClass cls : classes) {"));
 		assertThat(code, containsOne("for (NClass cls : this.classes) {"));
 		assertThat(code, containsOne("for (NClass cls2 : this.classes) {"));
+		CCTool.printReport();
 	}
 }

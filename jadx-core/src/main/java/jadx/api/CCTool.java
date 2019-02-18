@@ -59,6 +59,13 @@ public final class CCTool {
         // is to set that boolean to true if the branch is visited.
         cc = new HashMap<String, HashMap<Integer, Boolean>>();
 
+        // makeInsnBody in InsnGen 
+        HashMap<Integer, Boolean> makeInsnBodyMap = new HashMap<>();
+        for (int i = 0; i < 69; i++) {
+            makeInsnBodyMap.put(i, false);
+        }
+        cc.put("makeInsnBody@InsnGen", makeInsnBodyMap);   
+
         // processSwitch in RegionMaker
         HashMap<Integer, Boolean> processSwitchMap = new HashMap<>();
         for (int i = 0; i < 48; i++) {
@@ -74,6 +81,42 @@ public final class CCTool {
         cc.put("visit@EnumVisitor", visitMap);
 
         // TODO: Add maps for the other functions.
+        // extractFinally in BlockFinallyExtract
+        HashMap<Integer, Boolean> extractFinallyMap = new HashMap<>();
+        for (int i = 0; i < 49; i++) {
+            extractFinallyMap.put(i, false);
+        }
+        cc.put("extractFinally@BlockFinallyExtract", extractFinallyMap);
+
+
+        // mergeInternal in ArgType
+        HashMap<Integer, Boolean> mergeInternalMap = new HashMap<>();
+        for (int i = 0; i < 36; i++) {
+            mergeInternalMap.put(i, false);
+        }
+        cc.put("mergeInternal@ArgType", mergeInternalMap);
+
+        // visit in ProcessVariables
+        HashMap<Integer, Boolean> visitProcVarsMap = new HashMap<>();
+        for (int i = 0; i < 31; i++) {
+            visitProcVarsMap.put(i, false);
+        }
+        cc.put("visit@ProcessVariables", visitProcVarsMap);
+
+
+        // process in PostTypeInference
+        HashMap<Integer, Boolean> processMap = new HashMap<>();
+        for (int i = 0; i < 39; i++) {
+            processMap.put(i, false);
+        }
+        cc.put("process@PostTypeInference", processMap);
+
+        // checkArrayForEach in LoopRegionVisitor
+        HashMap<Integer, Boolean> checkArrayForEachMap = new HashMap<>();
+        for (int i = 0; i < 31; i++) {
+            checkArrayForEachMap.put(i, false);
+        }
+        cc.put("checkArrayForEach@LoopRegionVisitor", checkArrayForEachMap);
 
         initialized = true;
     }

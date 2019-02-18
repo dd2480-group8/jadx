@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -42,5 +43,6 @@ public class TestTryCatchFinally6 extends IntegrationTest {
 				indent(1) + "}",
 				"}"
 		));
+		CCTool.printReport();
 	}
 }

@@ -2,6 +2,7 @@ package jadx.tests.integration.arrays;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -24,5 +25,6 @@ public class TestArrayFillConstReplace extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsOne("return new int[]{127, 129, CONST_INT};"));
+		CCTool.printReport();
 	}
 }

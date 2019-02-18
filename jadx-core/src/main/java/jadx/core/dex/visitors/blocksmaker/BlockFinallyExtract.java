@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jadx.api.CCTool;
 import jadx.core.Jadx;
 import jadx.core.dex.attributes.AFlag;
 import jadx.core.dex.attributes.AType;
@@ -119,18 +120,25 @@ public class BlockFinallyExtract extends AbstractVisitor {
 		BitSet bs = new BitSet(count);
 		List<BlockNode> blocks = new ArrayList<>(count);
 		for (BlockNode block : handler.getBlocks()) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 0);
 			List<InsnNode> insns = block.getInstructions();
 			if (!insns.isEmpty()) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 1);
 				if (insns.get(0).getType() != InsnType.MOVE_EXCEPTION) {
+					CCTool.set("extractFinally@BlockFinallyExtract", 2);
 					blocks.add(block);
 				}
+				else CCTool.set("extractFinally@BlockFinallyExtract", 3);
 				bs.set(block.getId());
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 4);
 		}
 		if (blocks.isEmpty()) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 5);
 			// nothing to do
 			return false;
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 6);
 
 		List<BlocksRemoveInfo> removes = new LinkedList<>();
 		Set<BlockNode> splitters = new HashSet<>();
@@ -138,78 +146,109 @@ public class BlockFinallyExtract extends AbstractVisitor {
 		// remove 'finally' from handlers
 		TryCatchBlock tryBlock = handler.getTryBlock();
 		if (tryBlock.getHandlersCount() > 1) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 7);
 			for (ExceptionHandler otherHandler : tryBlock.getHandlers()) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 8);
 				if (otherHandler == handler) {
 					continue;
 				}
+				else CCTool.set("extractFinally@BlockFinallyExtract", 9);
 				for (BlockNode hb : otherHandler.getBlocks()) {
+					CCTool.set("extractFinally@BlockFinallyExtract", 10);
 					BlocksRemoveInfo removeInfo = removeInsns(mth, hb, blocks, bs);
 					if (removeInfo != null) {
+						CCTool.set("extractFinally@BlockFinallyExtract", 11);
 						removes.add(removeInfo);
 						break;
 					}
+					else CCTool.set("extractFinally@BlockFinallyExtract", 12);
 				}
 			}
 			if (removes.size() != tryBlock.getHandlersCount() - 1) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 13);
 				return false;
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 14);
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 15);
 
 		for (ExceptionHandler otherHandler : tryBlock.getHandlers()) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 16);
 			SplitterBlockAttr splitterAttr = otherHandler.getHandlerBlock().get(AType.SPLITTER_BLOCK);
 			if (splitterAttr != null) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 17);
 				BlockNode splBlock = splitterAttr.getBlock();
 				if (!splBlock.getCleanSuccessors().isEmpty()) {
+					CCTool.set("extractFinally@BlockFinallyExtract", 18);
 					splitters.add(splBlock);
 				}
+				else CCTool.set("extractFinally@BlockFinallyExtract", 19);
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 20);
 		}
 
 		// remove 'finally' from 'try' blocks (dominated by splitter block)
 		boolean removed = false;
 		for (BlockNode splitter : splitters) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 20);
 			BlockNode start = splitter.getCleanSuccessors().get(0);
 			List<BlockNode> list = BlockUtils.collectBlocksDominatedBy(splitter, start);
 			for (BlockNode block : list) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 21);
 				if (bs.get(block.getId())) {
+					CCTool.set("extractFinally@BlockFinallyExtract", 22);
 					continue;
 				}
+				else CCTool.set("extractFinally@BlockFinallyExtract", 23);
 				BlocksRemoveInfo removeInfo = removeInsns(mth, block, blocks, bs);
 				if (removeInfo != null) {
+					CCTool.set("extractFinally@BlockFinallyExtract", 24);
 					removes.add(removeInfo);
 					removed = true;
 					break;
 				}
+				else CCTool.set("extractFinally@BlockFinallyExtract", 25);
 			}
 		}
 		if (!removed) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 26);
 			return false;
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 27);
 
 		// 'finally' extract confirmed, run remove steps
 
 		LiveVarAnalysis laBefore = null;
 		boolean runReMap = isReMapNeeded(removes);
 		if (runReMap) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 28);
 			laBefore = new LiveVarAnalysis(mth);
 			laBefore.runAnalysis();
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 29);
 
 		int removeApplied = 0;
 		for (BlocksRemoveInfo removeInfo : removes) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 30);
 			if (applyRemove(mth, removeInfo)) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 31);
 				removeApplied++;
 				removeInfo.setApplied(true);
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 32);
 		}
 		if (removeApplied == 0) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 33);
 			return false;
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 34);
 		if (removeApplied != removes.size()) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 35);
 			throw new JadxRuntimeException("Some finally instructions failed to remove: "
 					+ removes.stream().filter(n -> !n.isApplied()).map(BlocksRemoveInfo::toString).collect(Collectors.joining(","))
 			);
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 36);
 
 		LiveVarAnalysis laAfter = null;
 
@@ -217,15 +256,18 @@ public class BlockFinallyExtract extends AbstractVisitor {
 		BlockNode handlerBlock = handler.getHandlerBlock();
 		InsnNode me = BlockUtils.getLastInsn(handlerBlock);
 		if (me != null && me.getType() == InsnType.MOVE_EXCEPTION) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 37);
 			boolean replaced = false;
 			List<InsnNode> insnsList = handlerBlock.getInstructions();
 			if (!handlerBlock.getCleanSuccessors().isEmpty()) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 38);
 				laAfter = new LiveVarAnalysis(mth);
 				laAfter.runAnalysis();
 
 				RegisterArg resArg = me.getResult();
 				BlockNode succ = handlerBlock.getCleanSuccessors().get(0);
 				if (laAfter.isLive(succ, resArg.getRegNum())) {
+					CCTool.set("extractFinally@BlockFinallyExtract", 39);
 					// kill variable
 					InsnNode kill = new InsnNode(InsnType.NOP, 0);
 					kill.setResult(resArg);
@@ -233,21 +275,30 @@ public class BlockFinallyExtract extends AbstractVisitor {
 					insnsList.set(insnsList.size() - 1, kill);
 					replaced = true;
 				}
+				else CCTool.set("extractFinally@BlockFinallyExtract", 40);
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 41);
 			if (!replaced) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 42);
 				insnsList.remove(insnsList.size() - 1);
 				handlerBlock.add(AFlag.SKIP);
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 43);
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 44);
 
 		// generate 'move' instruction for mapped register pairs
 		if (runReMap) {
+			CCTool.set("extractFinally@BlockFinallyExtract", 45);
 			if (laAfter == null) {
+				CCTool.set("extractFinally@BlockFinallyExtract", 46);
 				laAfter = new LiveVarAnalysis(mth);
 				laAfter.runAnalysis();
 			}
+			else CCTool.set("extractFinally@BlockFinallyExtract", 47);
 			performVariablesReMap(mth, removes, laBefore, laAfter);
 		}
+		else CCTool.set("extractFinally@BlockFinallyExtract", 48);
 
 		handler.setFinally(true);
 		return true;

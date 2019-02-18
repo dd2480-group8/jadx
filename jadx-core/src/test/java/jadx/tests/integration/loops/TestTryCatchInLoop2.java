@@ -10,6 +10,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestTryCatchInLoop2 extends IntegrationTest {
 
@@ -42,5 +43,6 @@ public class TestTryCatchInLoop2 extends IntegrationTest {
 
 		assertThat(code, containsOne("synchronized (this.mCache) {"));
 		assertThat(code, containsOne("for (int i = 0; i < items.length; i++) {"));
+		CCTool.printReport();
 	}
 }

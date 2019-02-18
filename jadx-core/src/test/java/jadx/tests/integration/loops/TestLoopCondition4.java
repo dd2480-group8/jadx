@@ -2,6 +2,7 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -34,5 +35,7 @@ public class TestLoopCondition4 extends IntegrationTest {
 		assertThat(code, containsOne("while (n > 11) {"));
 		assertThat(code, containsOne("n -= 12;"));
 		assertThat(code, containsOne("System.out.println(n);"));
+
+		CCTool.printReport();
 	}
 }

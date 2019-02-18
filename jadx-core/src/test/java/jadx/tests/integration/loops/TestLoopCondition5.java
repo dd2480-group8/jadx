@@ -2,6 +2,7 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.SmaliTest;
 
@@ -31,6 +32,8 @@ public class TestLoopCondition5 extends SmaliTest {
 		assertThat(code, containsOne("for ("));
 		assertThat(code, containsOne("return -1;"));
 		assertThat(code, countString(2, "return "));
+
+		CCTool.printReport();
 	}
 
 	@Test
@@ -41,5 +44,7 @@ public class TestLoopCondition5 extends SmaliTest {
 		assertThat(code, anyOf(containsOne("for ("), containsOne("while (true) {")));
 		assertThat(code, containsOne("return -1;"));
 		assertThat(code, countString(2, "return "));
+
+		CCTool.printReport();
 	}
 }

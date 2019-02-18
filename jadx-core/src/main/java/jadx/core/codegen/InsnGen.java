@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jadx.api.CCTool;
 import jadx.core.dex.attributes.AFlag;
 import jadx.core.dex.attributes.AType;
 import jadx.core.dex.attributes.nodes.FieldReplaceAttr;
@@ -233,81 +234,105 @@ public class InsnGen {
 	private void makeInsnBody(CodeWriter code, InsnNode insn, Set<Flags> state) throws CodegenException {
 		switch (insn.getType()) {
 			case CONST_STR:
+				CCTool.set("makeInsnBody@InsnGen", 0);
 				String str = ((ConstStringNode) insn).getString();
 				code.add(mth.dex().root().getStringUtils().unescapeString(str));
 				break;
 
 			case CONST_CLASS:
+				CCTool.set("makeInsnBody@InsnGen", 1);
 				ArgType clsType = ((ConstClassNode) insn).getClsType();
 				useType(code, clsType);
 				code.add(".class");
 				break;
 
 			case CONST:
+				CCTool.set("makeInsnBody@InsnGen", 2);
 				LiteralArg arg = (LiteralArg) insn.getArg(0);
 				code.add(lit(arg));
 				break;
 
 			case MOVE:
+				CCTool.set("makeInsnBody@InsnGen", 3);
 				addArg(code, insn.getArg(0), false);
 				break;
 
 			case CHECK_CAST:
 			case CAST: {
+				CCTool.set("makeInsnBody@InsnGen", 4);
 				boolean wrap = state.contains(Flags.BODY_ONLY);
 				if (wrap) {
+					CCTool.set("makeInsnBody@InsnGen", 5);
 					code.add('(');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 6);
 				}
 				code.add('(');
 				useType(code, (ArgType) ((IndexInsnNode) insn).getIndex());
 				code.add(") ");
 				addArg(code, insn.getArg(0), true);
 				if (wrap) {
+					CCTool.set("makeInsnBody@InsnGen", 7);
 					code.add(')');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 8);
 				}
 				break;
 			}
 
 			case ARITH:
+				CCTool.set("makeInsnBody@InsnGen", 9);
 				makeArith((ArithNode) insn, code, state);
 				break;
 
 			case NEG:
+				CCTool.set("makeInsnBody@InsnGen", 10);
 				oneArgInsn(code, insn, state, '-');
 				break;
 
 			case NOT:
+				CCTool.set("makeInsnBody@InsnGen", 11);
 				oneArgInsn(code, insn, state, '~');
 				break;
 
 			case RETURN:
+				CCTool.set("makeInsnBody@InsnGen", 12);
 				if (insn.getArgsCount() != 0) {
+					CCTool.set("makeInsnBody@InsnGen", 13);
 					code.add("return ");
 					addArg(code, insn.getArg(0), false);
 				} else {
+					CCTool.set("makeInsnBody@InsnGen", 14);
 					code.add("return");
 				}
 				break;
 
 			case BREAK:
+				CCTool.set("makeInsnBody@InsnGen", 15);
 				code.add("break");
 				LoopLabelAttr labelAttr = insn.get(AType.LOOP_LABEL);
 				if (labelAttr != null) {
+					CCTool.set("makeInsnBody@InsnGen", 16);
 					code.add(' ').add(mgen.getNameGen().getLoopLabel(labelAttr));
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 17);
 				}
 				break;
 
 			case CONTINUE:
+				CCTool.set("makeInsnBody@InsnGen", 18);
 				code.add("continue");
 				break;
 
 			case THROW:
+				CCTool.set("makeInsnBody@InsnGen", 19);
 				code.add("throw ");
 				addArg(code, insn.getArg(0), true);
 				break;
 
 			case CMP_L:
 			case CMP_G:
+				CCTool.set("makeInsnBody@InsnGen", 20);
 				code.add('(');
 				addArg(code, insn.getArg(0));
 				code.add(" > ");
@@ -320,27 +345,37 @@ public class InsnGen {
 				break;
 
 			case INSTANCE_OF: {
+				CCTool.set("makeInsnBody@InsnGen", 21);
 				boolean wrap = state.contains(Flags.BODY_ONLY);
 				if (wrap) {
+					CCTool.set("makeInsnBody@InsnGen", 22);
 					code.add('(');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 23);
 				}
 				addArg(code, insn.getArg(0));
 				code.add(" instanceof ");
 				useType(code, (ArgType) ((IndexInsnNode) insn).getIndex());
 				if (wrap) {
+					CCTool.set("makeInsnBody@InsnGen", 24);
 					code.add(')');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 25);
 				}
 				break;
 			}
 			case CONSTRUCTOR:
+				CCTool.set("makeInsnBody@InsnGen", 26);
 				makeConstructor((ConstructorInsn) insn, code);
 				break;
 
 			case INVOKE:
+				CCTool.set("makeInsnBody@InsnGen", 27);
 				makeInvoke((InvokeNode) insn, code);
 				break;
 
 			case NEW_ARRAY: {
+				CCTool.set("makeInsnBody@InsnGen", 28);
 				ArgType arrayType = ((NewArrayNode) insn).getArrayType();
 				code.add("new ");
 				useType(code, arrayType.getArrayRootElement());
@@ -349,21 +384,25 @@ public class InsnGen {
 				code.add(']');
 				int dim = arrayType.getArrayDimension();
 				for (int i = 0; i < dim - 1; i++) {
+					CCTool.set("makeInsnBody@InsnGen", 29);
 					code.add("[]");
 				}
 				break;
 			}
 
 			case ARRAY_LENGTH:
+				CCTool.set("makeInsnBody@InsnGen", 30);
 				addArg(code, insn.getArg(0));
 				code.add(".length");
 				break;
 
 			case FILLED_NEW_ARRAY:
+				CCTool.set("makeInsnBody@InsnGen", 31);
 				filledNewArray((FilledNewArrayNode) insn, code);
 				break;
 
 			case AGET:
+				CCTool.set("makeInsnBody@InsnGen", 32);
 				addArg(code, insn.getArg(0));
 				code.add('[');
 				addArg(code, insn.getArg(1), false);
@@ -371,6 +410,7 @@ public class InsnGen {
 				break;
 
 			case APUT:
+				CCTool.set("makeInsnBody@InsnGen", 33);
 				addArg(code, insn.getArg(0));
 				code.add('[');
 				addArg(code, insn.getArg(1), false);
@@ -379,11 +419,13 @@ public class InsnGen {
 				break;
 
 			case IGET: {
+				CCTool.set("makeInsnBody@InsnGen", 34);
 				FieldInfo fieldInfo = (FieldInfo) ((IndexInsnNode) insn).getIndex();
 				instanceField(code, fieldInfo, insn.getArg(0));
 				break;
 			}
 			case IPUT: {
+				CCTool.set("makeInsnBody@InsnGen", 35);
 				FieldInfo fieldInfo = (FieldInfo) ((IndexInsnNode) insn).getIndex();
 				instanceField(code, fieldInfo, insn.getArg(1));
 				code.add(" = ");
@@ -392,9 +434,11 @@ public class InsnGen {
 			}
 
 			case SGET:
+				CCTool.set("makeInsnBody@InsnGen", 36);
 				staticField(code, (FieldInfo) ((IndexInsnNode) insn).getIndex());
 				break;
 			case SPUT:
+				CCTool.set("makeInsnBody@InsnGen", 37);
 				FieldInfo field = (FieldInfo) ((IndexInsnNode) insn).getIndex();
 				staticField(code, field);
 				code.add(" = ");
@@ -402,47 +446,69 @@ public class InsnGen {
 				break;
 
 			case STR_CONCAT:
+				CCTool.set("makeInsnBody@InsnGen", 38);
 				boolean wrap = state.contains(Flags.BODY_ONLY);
 				if (wrap) {
+					CCTool.set("makeInsnBody@InsnGen", 39);
 					code.add('(');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 40);
 				}
 				for (Iterator<InsnArg> it = insn.getArguments().iterator(); it.hasNext(); ) {
+					CCTool.set("makeInsnBody@InsnGen", 41);
 					addArg(code, it.next());
 					if (it.hasNext()) {
+						CCTool.set("makeInsnBody@InsnGen", 42);
 						code.add(" + ");
+					} else {
+						CCTool.set("makeInsnBody@InsnGen", 43);
 					}
 				}
 				if (wrap) {
+					CCTool.set("makeInsnBody@InsnGen", 44);
 					code.add(')');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 45);
 				}
 				break;
 
 			case MONITOR_ENTER:
+				CCTool.set("makeInsnBody@InsnGen", 46);
 				if (isFallback()) {
+					CCTool.set("makeInsnBody@InsnGen", 47);
 					code.add("monitor-enter(");
 					addArg(code, insn.getArg(0));
 					code.add(')');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 48);
 				}
 				break;
 
 			case MONITOR_EXIT:
+				CCTool.set("makeInsnBody@InsnGen", 49);
 				if (isFallback()) {
+					CCTool.set("makeInsnBody@InsnGen", 50);
 					code.add("monitor-exit(");
 					addArg(code, insn.getArg(0));
 					code.add(')');
+				} else {
+					CCTool.set("makeInsnBody@InsnGen", 51);
 				}
 				break;
 
 			case TERNARY:
+				CCTool.set("makeInsnBody@InsnGen", 52);
 				makeTernary((TernaryInsn) insn, code, state);
 				break;
 
 			case ONE_ARG:
+				CCTool.set("makeInsnBody@InsnGen", 53);
 				addArg(code, insn.getArg(0));
 				break;
 
 			/* fallback mode instructions */
 			case IF:
+				CCTool.set("makeInsnBody@InsnGen", 54);
 				fallbackOnlyInsn(insn);
 				IfNode ifInsn = (IfNode) insn;
 				code.add("if (");
@@ -454,16 +520,19 @@ public class InsnGen {
 				break;
 
 			case GOTO:
+				CCTool.set("makeInsnBody@InsnGen", 55);
 				fallbackOnlyInsn(insn);
 				code.add("goto ").add(MethodGen.getLabelName(((GotoNode) insn).getTarget()));
 				break;
 
 			case MOVE_EXCEPTION:
+				CCTool.set("makeInsnBody@InsnGen", 56);
 				fallbackOnlyInsn(insn);
 				code.add("move-exception");
 				break;
 
 			case SWITCH:
+				CCTool.set("makeInsnBody@InsnGen", 57);
 				fallbackOnlyInsn(insn);
 				SwitchNode sw = (SwitchNode) insn;
 				code.add("switch(");
@@ -471,6 +540,7 @@ public class InsnGen {
 				code.add(") {");
 				code.incIndent();
 				for (int i = 0; i < sw.getCasesCount(); i++) {
+					CCTool.set("makeInsnBody@InsnGen", 58);
 					String key = sw.getKeys()[i].toString();
 					code.startLine("case ").add(key).add(": goto ");
 					code.add(MethodGen.getLabelName(sw.getTargets()[i])).add(';');
@@ -482,25 +552,32 @@ public class InsnGen {
 				break;
 
 			case FILL_ARRAY:
+				CCTool.set("makeInsnBody@InsnGen", 59);
 				fallbackOnlyInsn(insn);
 				FillArrayNode arrayNode = (FillArrayNode) insn;
 				Object data = arrayNode.getData();
 				String arrStr;
 				if (data instanceof int[]) {
+					CCTool.set("makeInsnBody@InsnGen", 60);
 					arrStr = Arrays.toString((int[]) data);
 				} else if (data instanceof short[]) {
+					CCTool.set("makeInsnBody@InsnGen", 61);
 					arrStr = Arrays.toString((short[]) data);
 				} else if (data instanceof byte[]) {
+					CCTool.set("makeInsnBody@InsnGen", 62);
 					arrStr = Arrays.toString((byte[]) data);
 				} else if (data instanceof long[]) {
+					CCTool.set("makeInsnBody@InsnGen", 63);
 					arrStr = Arrays.toString((long[]) data);
 				} else {
+					CCTool.set("makeInsnBody@InsnGen", 64);
 					arrStr = "?";
 				}
 				code.add('{').add(arrStr.substring(1, arrStr.length() - 1)).add('}');
 				break;
 
 			case NEW_INSTANCE:
+				CCTool.set("makeInsnBody@InsnGen", 65);
 				// only fallback - make new instance in constructor invoke
 				fallbackOnlyInsn(insn);
 				code.add("new ").add(insn.getResult().getType().toString());
@@ -508,9 +585,11 @@ public class InsnGen {
 
 			case PHI:
 			case MERGE:
+				CCTool.set("makeInsnBody@InsnGen", 66);
 				fallbackOnlyInsn(insn);
 				code.add(insn.getType().toString()).add("(");
 				for (InsnArg insnArg : insn.getArguments()) {
+					CCTool.set("makeInsnBody@InsnGen", 67);
 					addArg(code, insnArg);
 					code.add(' ');
 				}
@@ -518,6 +597,7 @@ public class InsnGen {
 				break;
 
 			default:
+				CCTool.set("makeInsnBody@InsnGen", 68);
 				throw new CodegenException(mth, "Unknown instruction: " + insn.getType());
 		}
 	}

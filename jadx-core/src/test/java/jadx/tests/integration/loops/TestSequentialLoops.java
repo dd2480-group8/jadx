@@ -10,6 +10,7 @@ import static jadx.tests.api.utils.JadxMatchers.countString;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestSequentialLoops extends IntegrationTest {
 
@@ -43,5 +44,6 @@ public class TestSequentialLoops extends IntegrationTest {
 		assertThat(code, containsOne("break;"));
 		assertThat(code, containsOne("return c;"));
 		assertThat(code, not(containsString("else")));
+		CCTool.printReport();
 	}
 }

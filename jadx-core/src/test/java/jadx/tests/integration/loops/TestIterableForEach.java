@@ -2,6 +2,7 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -32,5 +33,7 @@ public class TestIterableForEach extends IntegrationTest {
 				"}",
 				"return sb.toString();"
 		));
+
+		CCTool.printReport();
 	}
 }

@@ -2,6 +2,7 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -37,5 +38,7 @@ public class TestLoopCondition3 extends IntegrationTest {
 		assertThat(code, containsOne("while (a < 12) {"));
 		assertThat(code, containsOne("if (b + a < 9 && b < 8) {"));
 		assertThat(code, containsOne("if (b >= 2 && a > -1 && b < 6) {"));
+
+		CCTool.printReport();
 	}
 }

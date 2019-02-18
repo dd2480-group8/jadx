@@ -11,6 +11,8 @@ import jadx.tests.api.IntegrationTest;
 import static jadx.tests.api.utils.JadxMatchers.countString;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
+
 
 public class TestBreakInComplexIf2 extends IntegrationTest {
 
@@ -37,6 +39,7 @@ public class TestBreakInComplexIf2 extends IntegrationTest {
 			assertThat(test(Arrays.asList("x", "y", "skip", "z", "a")), is(3));
 			assertThat(test(Arrays.asList("x", "skip", "")), is(1));
 			assertThat(test(Arrays.asList("skip", "y", "12345")), is(1));
+			CCTool.printReport();
 		}
 	}
 
@@ -46,6 +49,7 @@ public class TestBreakInComplexIf2 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, countString(2, "break;"));
+		CCTool.printReport();
 	}
 
 	@Test
@@ -55,5 +59,6 @@ public class TestBreakInComplexIf2 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, countString(2, "break;"));
+		CCTool.printReport();
 	}
 }

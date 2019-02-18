@@ -7,6 +7,7 @@ import java.io.OutputStream;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -42,5 +43,6 @@ public class TestTryCatchFinally4 extends IntegrationTest {
 		assertThat(code, containsOne("} finally {"));
 		assertThat(code, containsOne("outputStream.close();"));
 		assertThat(code, containsOne("} catch (IOException e) {"));
+		CCTool.printReport();
 	}
 }

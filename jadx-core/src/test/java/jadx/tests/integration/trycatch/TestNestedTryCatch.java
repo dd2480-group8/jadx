@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -37,5 +38,6 @@ public class TestNestedTryCatch extends IntegrationTest {
 		assertThat(code, containsString("} catch (InterruptedException e) {"));
 		assertThat(code, containsString("} catch (Exception e2) {"));
 		assertThat(code, not(containsString("return")));
+		CCTool.printReport();
 	}
 }

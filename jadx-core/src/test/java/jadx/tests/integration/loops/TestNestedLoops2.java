@@ -9,6 +9,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestNestedLoops2 extends IntegrationTest {
 
@@ -33,5 +34,6 @@ public class TestNestedLoops2 extends IntegrationTest {
 
 		assertThat(code, containsOne("for (int i = 0; i < list.size(); i++) {"));
 		assertThat(code, containsOne("while (j < ((String) list.get(i)).length()) {"));
+		CCTool.printReport();
 	}
 }

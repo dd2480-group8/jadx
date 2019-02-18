@@ -37,6 +37,7 @@ import jadx.core.dex.visitors.CodeShrinker;
 import jadx.core.utils.BlockUtils;
 import jadx.core.utils.InstructionRemover;
 import jadx.core.utils.RegionUtils;
+import jadx.api.CCTool;
 
 public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor {
 	private static final Logger LOG = LoggerFactory.getLogger(LoopRegionVisitor.class);
@@ -128,63 +129,102 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 	private static LoopType checkArrayForEach(MethodNode mth, InsnNode initInsn, InsnNode incrInsn,
 	                                          IfCondition condition) {
 		if (!(incrInsn instanceof ArithNode)) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 0);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 1);
 		}
 		ArithNode arithNode = (ArithNode) incrInsn;
 		if (arithNode.getOp() != ArithOp.ADD) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 2);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 3);
 		}
 		InsnArg lit = incrInsn.getArg(1);
 		if (!lit.isLiteral() || ((LiteralArg) lit).getLiteral() != 1) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 4);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 5);
 		}
 		if (initInsn.getType() != InsnType.CONST
 				|| !initInsn.getArg(0).isLiteral()
 				|| ((LiteralArg) initInsn.getArg(0)).getLiteral() != 0) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 6);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 7);
 		}
 
 		InsnArg condArg = incrInsn.getArg(0);
 		if (!condArg.isRegister()) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 8);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 9);
 		}
 		SSAVar sVar = ((RegisterArg) condArg).getSVar();
 		List<RegisterArg> args = sVar.getUseList();
 		if (args.size() != 3 || args.get(2) != condArg) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 10);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 11);
 		}
 		condArg = args.get(0);
 		RegisterArg arrIndex = args.get(1);
 		InsnNode arrGetInsn = arrIndex.getParentInsn();
 		if (arrGetInsn == null || arrGetInsn.getType() != InsnType.AGET) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 12);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 13);
 		}
 		if (!condition.isCompare()) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 14);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 15);
 		}
 		Compare compare = condition.getCompare();
 		if (compare.getOp() != IfOp.LT || compare.getA() != condArg) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 16);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 17);
 		}
 		InsnNode len;
 		InsnArg bCondArg = compare.getB();
 		if (bCondArg.isInsnWrap()) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 18);
 			len = ((InsnWrapArg) bCondArg).getWrapInsn();
 		} else if (bCondArg.isRegister()) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 19);
 			len = ((RegisterArg) bCondArg).getAssignInsn();
 		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 20);
 			return null;
 		}
 		if (len == null || len.getType() != InsnType.ARRAY_LENGTH) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 21);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 22);
 		}
 		InsnArg arrayArg = len.getArg(0);
 		if (!arrayArg.equals(arrGetInsn.getArg(0))) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 23);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 24);
 		}
 		RegisterArg iterVar = arrGetInsn.getResult();
 		if (iterVar == null) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 25);
 			return null;
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 26);
 		}
 
 		// array for each loop confirmed
@@ -195,12 +235,17 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 		// inline array variable
 		CodeShrinker.shrinkMethod(mth);
 		if (arrGetInsn.contains(AFlag.WRAPPED)) {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 27);
 			InsnArg wrapArg = BlockUtils.searchWrappedInsnParent(mth, arrGetInsn);
 			if (wrapArg != null && wrapArg.getParentInsn() != null) {
+				CCTool.set("checkArrayForEach@LoopRegionVisitor", 28);
 				wrapArg.getParentInsn().replaceArg(wrapArg, iterVar);
 			} else {
+				CCTool.set("checkArrayForEach@LoopRegionVisitor", 29);
 				LOG.debug(" checkArrayForEach: Wrapped insn not found: {}, mth: {}", arrGetInsn, mth);
 			}
+		} else {
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 30);
 		}
 		return new ForEachLoop(iterVar, len.getArg(0));
 	}

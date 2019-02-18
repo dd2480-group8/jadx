@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -48,5 +49,7 @@ public class TestIterableForEach2 extends IntegrationTest {
 		assertThat(code, containsOne("for (Authorization auth : service.getAuthorizations()) {"));
 		assertThat(code, containsOne("if (isValid(auth)) {"));
 		assertThat(code, containsOne("return auth.getToken();"));
+
+		CCTool.printReport();
 	}
 }

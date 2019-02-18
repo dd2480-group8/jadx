@@ -2,6 +2,7 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -42,5 +43,7 @@ public class TestLoopConditionInvoke extends IntegrationTest {
 		assertThat(code, containsOne("return false;"));
 		assertThat(code, containsOne("} while (ch != lastChar);"));
 		assertThat(code, containsOne("return true;"));
+
+		CCTool.printReport();
 	}
 }
