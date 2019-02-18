@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.core.dex.visitors.DepthTraversal;
 import jadx.core.dex.visitors.IDexTreeVisitor;
@@ -45,5 +46,6 @@ public class TestTryCatchFinally3 extends IntegrationTest {
 
 		assertThat(code, containsOne("} finally {"));
 		assertThat(code, containsOne("cls.unload();"));
+		CCTool.printReport();
 	}
 }

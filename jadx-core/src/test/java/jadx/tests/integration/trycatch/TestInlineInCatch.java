@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -41,5 +42,6 @@ public class TestInlineInCatch extends IntegrationTest {
 		assertThat(code, containsOne("if (output != null) {"));
 		assertThat(code, containsOne("output.delete();"));
 		assertThat(code, containsOne("return 2;"));
+		CCTool.printReport();
 	}
 }

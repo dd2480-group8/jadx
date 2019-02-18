@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -49,5 +50,6 @@ public class TestTryCatch6 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsOne("try {"));
+		CCTool.printReport();
 	}
 }

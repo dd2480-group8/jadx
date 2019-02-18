@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.SmaliTest;
 
@@ -31,5 +32,6 @@ public class TestMultiExceptionCatchSameJump extends SmaliTest {
 		assertThat(code, containsOne("} catch (ProviderException | DateTimeException e) {"));
 		assertThat(code, containsOne("throw new RuntimeException(e);"));
 		assertThat(code, not(containsString("RuntimeException e;")));
+		CCTool.printReport();
 	}
 }

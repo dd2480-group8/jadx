@@ -78,6 +78,7 @@ As instructed in the assignment, we implemented a manual coverage tool in the co
 
 1. Introduce branch flags in the method that we want to measure the code coverage for. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709).
 1. Count the number of flags and allocate a HashMap for the flags in the CCTool **initialize** method. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62).
+1. Save the measurements after each test (console and file). Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/test/java/jadx/tests/integration/enums/TestSwitchOverEnum2.java#L58](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/test/java/jadx/tests/integration/enums/TestSwitchOverEnum2.java#L58).
 1. Run **./gradle build**.
 1. View the **cc_report.txt** file in the jadx-core folder. Example [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt).
 

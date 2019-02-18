@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -52,5 +53,6 @@ public class TestTryCatch5 extends IntegrationTest {
 //		assertThat(code, containsString("output = new FileOutputStream(file);"));
 //		assertThat(code, containsString("} catch (IOException e) {"));
 		assertThat(code, containsString("file.delete();"));
+		CCTool.printReport();
 	}
 }

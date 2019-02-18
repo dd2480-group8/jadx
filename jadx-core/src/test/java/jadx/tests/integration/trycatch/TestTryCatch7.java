@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -36,5 +37,6 @@ public class TestTryCatch7 extends IntegrationTest {
 		assertThat(code, containsOne(excVarName + " = " + catchExcVarName + ";"));
 		assertThat(code, containsOne(excVarName + ".printStackTrace();"));
 		assertThat(code, containsOne("return " + excVarName + ";"));
+		CCTool.printReport();
 	}
 }
