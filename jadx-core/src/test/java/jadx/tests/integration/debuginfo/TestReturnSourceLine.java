@@ -1,5 +1,6 @@
 package jadx.tests.integration.debuginfo;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.codegen.CodeWriter;
@@ -63,6 +64,8 @@ public class TestReturnSourceLine extends IntegrationTest {
 //		TODO:
 //		MethodNode test3 = cls.searchMethodByName("test3(I)I");
 //		checkLine(lines, codeWriter, test3, 3, "return v;");
+
+		CCTool.printReport();
 	}
 
 	private static void checkLine(String[] lines, CodeWriter cw, LineAttrNode node, int offset, String str) {

@@ -1,5 +1,6 @@
 package jadx.tests.integration.variables;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -52,5 +53,7 @@ public class TestVariables5 extends IntegrationTest {
 		assertThat(code, not(containsString("int i2++;")));
 		assertThat(code, containsOne("int i = 0;"));
 		assertThat(code, containsOne("i++;"));
+
+		CCTool.printReport();
 	}
 }

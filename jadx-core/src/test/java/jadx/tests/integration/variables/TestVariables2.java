@@ -1,5 +1,6 @@
 package jadx.tests.integration.variables;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -27,5 +28,7 @@ public class TestVariables2 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsString("Object store = s != null ? s : null;"));
+
+		CCTool.printReport();
 	}
 }

@@ -1,5 +1,6 @@
 package jadx.tests.integration.variables;
 
+import jadx.api.CCTool;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -66,11 +67,15 @@ public class TestVariables4 extends IntegrationTest {
 		assertThat(code, containsString("exc = e.getCause();"));
 		assertThat(code, containsString("System.err.println(\"Class '\" + clsName + \"' not found\");"));
 		assertThat(code, containsString("return pass;"));
+
+		CCTool.printReport();
 	}
 
 	@Test
 	public void test2() {
 		noDebugInfo();
 		getClassNode(TestCls.class);
+
+		CCTool.printReport();
 	}
 }

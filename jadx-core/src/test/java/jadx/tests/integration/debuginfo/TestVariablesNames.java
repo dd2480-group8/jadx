@@ -1,5 +1,6 @@
 package jadx.tests.integration.debuginfo;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -48,5 +49,7 @@ public class TestVariablesNames extends SmaliTest {
 		assertThat(code, containsOne("f1(str);"));
 		assertThat(code, containsOne("f2(i2, \"i\" + i2);"));
 		assertThat(code, containsOne("f3(d, \"d\" + d);"));
+
+		CCTool.printReport();
 	}
 }

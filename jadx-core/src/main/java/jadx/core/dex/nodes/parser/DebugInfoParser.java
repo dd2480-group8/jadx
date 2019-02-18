@@ -1,5 +1,6 @@
 package jadx.core.dex.nodes.parser;
 
+import jadx.api.CCTool;
 import java.util.List;
 
 import com.android.dex.Dex.Section;
@@ -60,16 +61,24 @@ public class DebugInfoParser {
 		int paramsCount = section.readUleb128();
 		List<RegisterArg> mthArgs = mth.getArguments(false);
 		for (int i = 0; i < paramsCount; i++) {
+			CCTool.set("process@DebugInfoParser", 0);
 			int id = section.readUleb128() - 1;
 			if (id != DexNode.NO_INDEX) {
+				CCTool.set("process@DebugInfoParser", 1);
 				String name = dex.getString(id);
 				if (i < mthArgs.size()) {
+					CCTool.set("process@DebugInfoParser", 2);
 					mthArgs.get(i).setName(name);
+				}else{
+					CCTool.set("process@DebugInfoParser", 3);
 				}
+			}else{
+				CCTool.set("process@DebugInfoParser", 4);
 			}
 		}
 
 		for (RegisterArg arg : mthArgs) {
+			CCTool.set("process@DebugInfoParser", 5);
 			int rn = arg.getRegNum();
 			locals[rn] = new LocalVar(arg);
 			activeRegisters[rn] = arg;
@@ -83,19 +92,23 @@ public class DebugInfoParser {
 
 		int c = section.readByte() & 0xFF;
 		while (c != DBG_END_SEQUENCE) {
+			CCTool.set("process@DebugInfoParser", 6);
 			switch (c) {
 				case DBG_ADVANCE_PC: {
+					CCTool.set("process@DebugInfoParser", 7);
 					int addrInc = section.readUleb128();
 					addr = addrChange(addr, addrInc, line);
 					setLine(addr, line);
 					break;
 				}
 				case DBG_ADVANCE_LINE: {
+					CCTool.set("process@DebugInfoParser", 8);
 					line += section.readSleb128();
 					break;
 				}
 
 				case DBG_START_LOCAL: {
+					CCTool.set("process@DebugInfoParser", 9);
 					int regNum = section.readUleb128();
 					int nameId = section.readUleb128() - 1;
 					int type = section.readUleb128() - 1;
@@ -105,6 +118,7 @@ public class DebugInfoParser {
 					break;
 				}
 				case DBG_START_LOCAL_EXTENDED: {
+					CCTool.set("process@DebugInfoParser", 10);
 					int regNum = section.readUleb128();
 					int nameId = section.readUleb128() - 1;
 					int type = section.readUleb128() - 1;
@@ -115,50 +129,70 @@ public class DebugInfoParser {
 					break;
 				}
 				case DBG_RESTART_LOCAL: {
+					CCTool.set("process@DebugInfoParser", 11);
 					int regNum = section.readUleb128();
 					LocalVar var = locals[regNum];
 					if (var != null) {
+						CCTool.set("process@DebugInfoParser", 12);
 						if (var.end(addr, line)) {
+							CCTool.set("process@DebugInfoParser", 13);
 							setVar(var);
+						}else{
+							CCTool.set("process@DebugInfoParser", 14);
 						}
 						var.start(addr, line);
+					}else{
+						CCTool.set("process@DebugInfoParser", 15);
 					}
 					varsInfoFound = true;
 					break;
 				}
 				case DBG_END_LOCAL: {
+					CCTool.set("process@DebugInfoParser", 16);
 					int regNum = section.readUleb128();
 					LocalVar var = locals[regNum];
 					if (var != null) {
+						CCTool.set("process@DebugInfoParser", 17);
 						var.end(addr, line);
 						setVar(var);
+					}else{
+						CCTool.set("process@DebugInfoParser", 18);
 					}
 					varsInfoFound = true;
 					break;
 				}
 
 				case DBG_SET_PROLOGUE_END:
+					CCTool.set("process@DebugInfoParser", 19);
 				case DBG_SET_EPILOGUE_BEGIN:
+					CCTool.set("process@DebugInfoParser", 20);
 					// do nothing
 					break;
 
 				case DBG_SET_FILE: {
+					CCTool.set("process@DebugInfoParser", 21);
 					int idx = section.readUleb128() - 1;
 					if (idx != DexNode.NO_INDEX) {
+						CCTool.set("process@DebugInfoParser", 22);
 						String sourceFile = dex.getString(idx);
 						mth.addAttr(new SourceFileAttr(sourceFile));
+					}else{
+						CCTool.set("process@DebugInfoParser", 23);
 					}
 					break;
 				}
 
 				default: {
+					CCTool.set("process@DebugInfoParser", 24);
 					if (c >= DBG_FIRST_SPECIAL) {
+						CCTool.set("process@DebugInfoParser", 25);
 						int adjustedOpcode = c - DBG_FIRST_SPECIAL;
 						int addrInc = adjustedOpcode / DBG_LINE_RANGE;
 						addr = addrChange(addr, addrInc, line);
 						line += DBG_LINE_BASE + adjustedOpcode % DBG_LINE_RANGE;
 						setLine(addr, line);
 					} else {
+						CCTool.set("process@DebugInfoParser", 26);
 						throw new DecodeException("Unknown debug insn code: " + c);
 					}
 					break;
@@ -168,12 +202,19 @@ public class DebugInfoParser {
 		}
 
 		if (varsInfoFound) {
+			CCTool.set("process@DebugInfoParser", 27);
 			for (LocalVar var : locals) {
+				CCTool.set("process@DebugInfoParser", 28);
 				if (var != null && !var.isEnd()) {
+					CCTool.set("process@DebugInfoParser", 29);
 					var.end(mth.getCodeSize() - 1, line);
 					setVar(var);
+				}else{
+					CCTool.set("process@DebugInfoParser", 30);
 				}
 			}
+		}else{
+			CCTool.set("process@DebugInfoParser", 31);
 		}
 		setSourceLines(addr, insnByOffset.length, line);
 	}
