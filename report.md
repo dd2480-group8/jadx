@@ -90,7 +90,10 @@ In addition to our manual tool. The project runs Codecov which displays the code
 
 The patch is easiest displayed by multiple diff commands. 
 1. Display the CCTool itself (which is self-initialized upon invokation): **git diff master cc jadx-core/src/main/java/jadx/api/CCTool.java**
-1. Display the instrumented code in a unit test: **git diff master cc jadx-core/src/test/java/jadx/tests/integration/enums/TestEnums.java**. 1. Display the instrumented code in the function (for reference): **git diff master cc jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java**.
+1. Display the instrumented code in a unit test: **git diff master cc jadx-core/src/test/java/jadx/tests/integration/enums/TestEnums.java**. 
+1. Display the instrumented code in the function (for reference): **git diff master cc jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java**.
+
+**The ten methods measured are the listed above.**
 
 Our tool supports measuring any branch where a flag is put in (with a unique branch ID). It is heavily dependant on the programmers accuracy, to not miss branches (such as inline conditionals). The output seems very accurate when comparing with the results from the Codecov tool.
 
