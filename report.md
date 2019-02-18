@@ -93,7 +93,7 @@ its output?
 
 ### Evaluation
 
-Report of old coverage: [link]
+Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
 
 Report of new coverage: [link]
 
