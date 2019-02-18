@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -59,5 +60,6 @@ public class TestFinally extends IntegrationTest {
 
 		assertThat(code, containsOne("cursor.getString(columnIndex);"));
 		assertThat(code, not(containsOne("String str = true;")));
+		CCTool.printReport();
 	}
 }

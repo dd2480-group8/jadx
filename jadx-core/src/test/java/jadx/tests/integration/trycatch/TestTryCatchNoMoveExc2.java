@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.SmaliTest;
 
@@ -35,5 +36,6 @@ public class TestTryCatchNoMoveExc2 extends SmaliTest {
 				"}",
 				"System.nanoTime();"
 		));
+		CCTool.printReport();
 	}
 }

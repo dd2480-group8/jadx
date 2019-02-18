@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -41,5 +42,6 @@ public class TestTryCatch4 extends IntegrationTest {
 		assertThat(code, containsString("System.out.println(\"Exception\");"));
 		assertThat(code, containsString("return null;"));
 		assertThat(code, not(containsString("output = output;")));
+		CCTool.printReport();
 	}
 }

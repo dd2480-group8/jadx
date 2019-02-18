@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -58,5 +59,6 @@ public class TestTryCatch8 extends IntegrationTest {
 		assertThat(code, containsOne("this.e = e;"));
 		assertThat(code, containsOne("} catch (Exception x) {"));
 		assertThat(code, containsOne("this.e = new MyException(\"MyExc\", x);"));
+		CCTool.printReport();
 	}
 }

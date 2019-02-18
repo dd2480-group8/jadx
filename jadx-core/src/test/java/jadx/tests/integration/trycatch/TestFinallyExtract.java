@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -38,5 +39,6 @@ public class TestFinallyExtract extends IntegrationTest {
 		assertThat(code, containsOne("try {"));
 		assertThat(code, containsOne("} finally {"));
 		assertThat(code, containsOne("if (!success) {"));
+		CCTool.printReport();
 	}
 }
