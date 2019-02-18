@@ -71,10 +71,10 @@ Method: makeInsnBody@InsnGen: 65.21739130434783
 	Branch: 67: Missed
 	Branch: 68: Missed
 
-Method: processSwitch@RegionMaker: 77.08333333333334
+Method: processSwitch@RegionMaker: 81.25
 	Branch: 0: Covered
 	Branch: 1: Covered
-	Branch: 2: Missed
+	Branch: 2: Covered
 	Branch: 3: Covered
 	Branch: 4: Covered
 	Branch: 5: Missed
@@ -103,7 +103,7 @@ Method: processSwitch@RegionMaker: 77.08333333333334
 	Branch: 28: Covered
 	Branch: 29: Covered
 	Branch: 30: Covered
-	Branch: 31: Missed
+	Branch: 31: Covered
 	Branch: 32: Covered
 	Branch: 33: Covered
 	Branch: 34: Covered

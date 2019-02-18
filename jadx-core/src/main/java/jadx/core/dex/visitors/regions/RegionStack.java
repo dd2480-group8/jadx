@@ -14,7 +14,7 @@ import jadx.core.dex.nodes.IRegion;
 import jadx.core.dex.nodes.MethodNode;
 import jadx.core.utils.exceptions.JadxOverflowException;
 
-final class RegionStack {
+public final class RegionStack {
 	private static final Logger LOG = LoggerFactory.getLogger(RegionStack.class);
 	private static final boolean DEBUG = false;
 

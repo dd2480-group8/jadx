@@ -698,7 +698,7 @@ public class RegionMaker {
 		region.add(start);
 	}
 
-	private BlockNode processSwitch(IRegion currentRegion, BlockNode block, SwitchNode insn, RegionStack stack) {
+	public BlockNode processSwitch(IRegion currentRegion, BlockNode block, SwitchNode insn, RegionStack stack) {
 		SwitchRegion sw = new SwitchRegion(currentRegion, block);
 		currentRegion.getSubBlocks().add(sw);
 
