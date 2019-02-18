@@ -81,6 +81,13 @@ public final class CCTool {
         }
         cc.put("extractFinally@BlockFinallyExtract", extractFinallyMap);
 
+        // mergeInternal in ArgType
+        HashMap<Integer, Boolean> mergeInternalMap = new HashMap<>();
+        for (int i = 0; i < 36; i++) {
+            mergeInternalMap.put(i, false);
+        }
+        cc.put("mergeInternal@ArgType", mergeInternalMap);
+
         initialized = true;
     }
 }

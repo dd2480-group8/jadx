@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 
+import jadx.api.CCTool;
 import jadx.core.Consts;
 import jadx.core.dex.nodes.DexNode;
 import jadx.core.dex.nodes.parser.SignatureParser;
@@ -480,70 +481,106 @@ public abstract class ArgType {
 
 	private static ArgType mergeInternal(@Nullable DexNode dex, ArgType a, ArgType b) {
 		if (a == UNKNOWN) {
+			CCTool.set("mergeInternal@ArgType", 0);
 			return b;
 		}
+		else CCTool.set("mergeInternal@ArgType", 1);
 		if (a.isArray()) {
+			CCTool.set("mergeInternal@ArgType", 2);
 			return mergeArrays(dex, (ArrayArg) a, b);
 		} else if (b.isArray()) {
+			CCTool.set("mergeInternal@ArgType", 3);
 			return mergeArrays(dex, (ArrayArg) b, a);
 		}
+		else CCTool.set("mergeInternal@ArgType", 4);
 		if (!a.isTypeKnown()) {
+			CCTool.set("mergeInternal@ArgType", 5);
 			if (b.isTypeKnown()) {
+				CCTool.set("mergeInternal@ArgType", 6);
 				if (a.contains(b.getPrimitiveType())) {
+					CCTool.set("mergeInternal@ArgType", 7);
 					return b;
 				}
+				else CCTool.set("mergeInternal@ArgType", 8);
 				return null;
 			} else {
 				// both types unknown
+				CCTool.set("mergeInternal@ArgType", 9);
 				List<PrimitiveType> types = new ArrayList<>();
 				for (PrimitiveType type : a.getPossibleTypes()) {
+					CCTool.set("mergeInternal@ArgType", 10);
 					if (b.contains(type)) {
+						CCTool.set("mergeInternal@ArgType", 11);
 						types.add(type);
 					}
+					else CCTool.set("mergeInternal@ArgType", 12);
 				}
 				if (types.isEmpty()) {
+					CCTool.set("mergeInternal@ArgType", 13);
 					return null;
 				}
+				else CCTool.set("mergeInternal@ArgType", 14);
 				if (types.size() == 1) {
+					CCTool.set("mergeInternal@ArgType", 15);
 					PrimitiveType nt = types.get(0);
 					if (nt == PrimitiveType.OBJECT || nt == PrimitiveType.ARRAY) {
+						CCTool.set("mergeInternal@ArgType", 16);
 						return unknown(nt);
 					} else {
+						CCTool.set("mergeInternal@ArgType", 17);
 						return primitive(nt);
 					}
 				} else {
+					CCTool.set("mergeInternal@ArgType", 18);
 					return unknown(types.toArray(new PrimitiveType[types.size()]));
 				}
 			}
 		} else {
+			CCTool.set("mergeInternal@ArgType", 19);
 			if (a.isGenericType()) {
+				CCTool.set("mergeInternal@ArgType", 20);
 				return a;
 			}
+			else CCTool.set("mergeInternal@ArgType", 21);
 			if (b.isGenericType()) {
+				CCTool.set("mergeInternal@ArgType", 22);
 				return b;
 			}
+			else CCTool.set("mergeInternal@ArgType", 23);
 
 			if (a.isObject() && b.isObject()) {
+				CCTool.set("mergeInternal@ArgType", 24);
 				String aObj = a.getObject();
 				String bObj = b.getObject();
 				if (aObj.equals(bObj)) {
+					CCTool.set("mergeInternal@ArgType", 25);
 					return a.getGenericTypes() != null ? a : b;
 				}
+				else CCTool.set("mergeInternal@ArgType", 26);
 				if (aObj.equals(Consts.CLASS_OBJECT)) {
+					CCTool.set("mergeInternal@ArgType", 27);
 					return b;
 				}
+				else CCTool.set("mergeInternal@ArgType", 28);
 				if (bObj.equals(Consts.CLASS_OBJECT)) {
+					CCTool.set("mergeInternal@ArgType", 29);
 					return a;
 				}
+				else CCTool.set("mergeInternal@ArgType", 30);
 				if (dex == null) {
+					CCTool.set("mergeInternal@ArgType", 31);
 					return null;
 				}
+				else CCTool.set("mergeInternal@ArgType",32 );
 				String obj = dex.root().getClsp().getCommonAncestor(aObj, bObj);
 				return obj == null ? null : object(obj);
 			}
+			else CCTool.set("mergeInternal@ArgType", 33);
 			if (a.isPrimitive() && b.isPrimitive() && a.getRegCount() == b.getRegCount()) {
+				CCTool.set("mergeInternal@ArgType", 34);
 				return primitive(PrimitiveType.getSmaller(a.getPrimitiveType(), b.getPrimitiveType()));
 			}
+			else CCTool.set("mergeInternal@ArgType", 35);
 		}
 		return null;
 	}
