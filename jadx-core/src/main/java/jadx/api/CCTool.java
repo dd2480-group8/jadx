@@ -88,6 +88,20 @@ public final class CCTool {
         }
         cc.put("extractFinally@BlockFinallyExtract", extractFinallyMap);
 
+        // process in PostTypeInference
+        HashMap<Integer, Boolean> processMap = new HashMap<>();
+        for (int i = 0; i < 39; i++) {
+            processMap.put(i, false);
+        }
+        cc.put("process@PostTypeInference", processMap);
+
+        // checkArrayForEach in LoopRegionVisitor
+        HashMap<Integer, Boolean> checkArrayForEachMap = new HashMap<>();
+        for (int i = 0; i < 31; i++) {
+            checkArrayForEachMap.put(i, false);
+        }
+        cc.put("checkArrayForEach@LoopRegionVisitor", checkArrayForEachMap);
+
         initialized = true;
     }
 }
