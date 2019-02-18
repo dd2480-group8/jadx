@@ -9,6 +9,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestTypeResolver2 extends IntegrationTest {
 
@@ -30,5 +31,6 @@ public class TestTypeResolver2 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsOne("if (obj != null) {"));
+		CCTool.printReport();
 	}
 }

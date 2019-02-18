@@ -7,6 +7,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestTypeResolver3 extends IntegrationTest {
 
@@ -28,11 +29,13 @@ public class TestTypeResolver3 extends IntegrationTest {
 
 		// TODO inline into return
 		assertThat(code, containsOne("s1.length() == s2.length() ? 0 : s1.length() < s2.length() ? -1 : 1;"));
+		CCTool.printReport();
 	}
 
 	@Test
 	public void test2() {
 		noDebugInfo();
 		getClassNode(TestCls.class);
+		CCTool.printReport();
 	}
 }

@@ -8,6 +8,7 @@ import jadx.tests.api.IntegrationTest;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestTypeResolver extends IntegrationTest {
 
@@ -28,5 +29,6 @@ public class TestTypeResolver extends IntegrationTest {
 
 		assertThat(code, containsString("this(b1, b2, 0, 0, 0);"));
 		assertThat(code, not(containsString("= this;")));
+		CCTool.printReport();
 	}
 }
