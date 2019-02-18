@@ -21,7 +21,7 @@ The project builds easily and as documented. It uses gradle which is self-contai
    * Are the results clear? **Answer: Yes. Especially when looking into the most complex ones.**
 2. Are the functions just complex, or also long? **Answer: Some of them are. Generally though they are very nested with branches.**
 3. What is the purpose of the functions? **Answer: See table below. Some of them are related to the high CC. With many switch cases, because it needs to handle many different types of scenarios (OP codes). Although it could be simplified.**
-4. Are exceptions taken into account in the given measurements? **Answer: Our program does not use exception in the functions.**
+4. Are exceptions taken into account in the given measurements? **Answer: Our program does not use exceptions in the functions.**
 5. Is the documentation clear w.r.t. all the possible outcomes? **Answer: Not all of the functions. Some are.**
 
 **Results from Lizard**
@@ -30,16 +30,16 @@ File column contains the class, method name, line numbers (interval) of the code
 
 | Complexity | LOC | File | Purpose |
 |---|---|---|---|
-| 222 | 407 | decode@86-583@[InsnDecoder.java](./jadx-core/src/main/java/jadx/core/dex/instructions/InsnDecoder.java) | Decodes a binary instruction (by OP code, parse parameters). |
 | 60 | 255 | makeInsnBody@233-523@[InsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) | Generates code from instructions. |
 | 34 | 125 | processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | Handles a switch code block. |
-| 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | Process enums (?). |
-| 32 | 39 | TestCls::test@15-53@[TestConditions15.java](./jadx-core/src/test/java/jadx/tests/integration/conditions/TestConditions15.java) | Test class for conditions. |
+| 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | Process enums. |
 | 31 | 119 | extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | Extracts a finally code block.  |
 | 31 | 98 | process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | Handle type inference. |
 | 26 | 67 | mergeInternal@481-549@[ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) | Merges types. |
 | 25 | 74 | checkArrayForEach@128-206@[LoopRegionVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/LoopRegionVisitor.java) | Checks the (foreach) loop type. |
-| 25 | 80 | visit@170-264@[ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) | Process variables (?). |
+| 25 | 80 | visit@170-264@[ProcessVariables.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/ProcessVariables.java) | Process variables. |
+| 24 | 112 | process@56-179@[DebugInfoParser.java](./jadx-core/src/main/java/jadx/core/dex/nodes/parser/DebugInfoParser.java) | Process different debug info. |
+| 23 | 77 | fixTypes@155-241@[ConstInlineVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/ConstInlineVisitor.java) | Similiar to PostTypeInference.process, but handles const inlines. |
 
 **Calculations by Simon**
 
@@ -68,33 +68,43 @@ Remember to count inline conditionals (foo ? ... : ...). Conditionals are within
 
 ### Tools
 
-Document your experience in using a "new"/different coverage tool.
+As instructed in the assignment, we implemented a manual coverage tool in the code. It was pretty tricky due to the size of the project and the nature of how the tests are run. Because the project is dealing with decompilation, much of the tests are run on code that is compiled. There was no entry point for all the tests, so the instrumentation had to be enforced in many places. The tool itself is small and can be seen here: [CCTool](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java). The tool is used in the following manner.
 
-How well was the tool documented? Was it possible/easy/difficult to
-integrate it with your build environment?
+Additionally, there was no ability to know when all the tests have been run. So instrumention had to be put in to store the intermediate results between test runs at the end of every test (**printReport**). A way to fix this would be to upgrade the JUnit framework to a later version, which has a richer support for annotations (e.g. @AfterAllMethods).
 
-### DYI
+1. Introduce branch flags in the method that we want to measure the code coverage for. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java#L709).
+1. Count the number of flags and allocate a HashMap for the flags in the CCTool **initialize** method. Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java#L62).
+1. Save the measurements after each test (console and file). Example: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/test/java/jadx/tests/integration/enums/TestSwitchOverEnum2.java#L58](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/test/java/jadx/tests/integration/enums/TestSwitchOverEnum2.java#L58).
+1. Run **./gradle build**.
+1. View the **cc_report.txt** file in the jadx-core folder. Example [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt).
 
-Show a patch that show the instrumented code in main (or the unit
-test setup), and the ten methods where branch coverage is measured.
+In addition to our manual tool. The project runs Codecov which displays the code coverage as well. This can be explored here: [https://codecov.io/gh/skylot/jadx](https://codecov.io/gh/skylot/jadx). Our tool is a bit more granular as we measure individual methods, while Codecov measures the entire source file. However, both our tool and Codecov will discover areas that are not covered by tests.
 
-The patch is probably too long to be copied here, so please add
-the git command that is used to obtain the patch instead:
+### DIY
 
-git diff ...
+The patch is easiest displayed by multiple diff commands. 
+1. Display the CCTool itself (which is self-initialized upon invokation): **git diff master cc jadx-core/src/main/java/jadx/api/CCTool.java**
+1. Display the instrumented code in a unit test: **git diff master cc jadx-core/src/test/java/jadx/tests/integration/enums/TestEnums.java**. 
+1. Display the instrumented code in the function (for reference): **git diff master cc jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java**.
 
-What kinds of constructs does your tool support, and how accurate is
-its output?
+**The ten methods measured are listed above.**
+
+Our tool supports measuring any branch where a flag is put in (with a unique branch ID). It is heavily dependant on the programmers accuracy, to not miss branches (such as inline conditionals). The output seems very accurate when comparing with the results from the Codecov tool.
 
 ### Evaluation
 
-Report of old coverage: [link]
+Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
 
-Report of new coverage: [link]
+Report of new coverage: [https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt)
 
 Test cases added:
 
-git diff ...
+| File | git diff |
+|---|---|
+| [TestBadEnum.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java |
+| [TestBadSwitch.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java |
+
+Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
 ## Refactoring
 
@@ -109,20 +119,60 @@ git diff ...
 For each team member, how much time was spent in
 
 1. plenary discussions/meetings;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 3h
+- Shapour: 
 
 2. discussions within parts of the group;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 3. reading documentation;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 4h
+- Shapour: 
 
 4. configuration;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 1h
+- Shapour: 
 
 5. analyzing code/output;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 6. writing documentation;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 7. writing code;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 4h
+- Shapour: 
 
 8. running code?
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 1h
+- Shapour: 
 
 ## Overall experience
 
