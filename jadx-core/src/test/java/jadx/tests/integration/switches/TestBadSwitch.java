@@ -17,6 +17,11 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+// Documentation: If the RegionMaker is given a bad data structure,
+// it needs to recover from that and yield a desired result. Ideally,
+// it should not throw an unexpected exception. The processSwitch method
+// in RegionMaker had to be made public for this test to work. It is
+// deeply nested and we could not figure out how to test it in a better way.
 public class TestBadSwitch extends IntegrationTest {
 	public static class TestCls {
 		public String escape(String str) {
@@ -41,9 +46,7 @@ public class TestBadSwitch extends IntegrationTest {
             SwitchNode switchBlock = new SwitchNode(InsnArg.reg(0, ArgType.NARROW), new Object[0], new int[0], 0);
 
             RegionMaker regionMaker = new RegionMaker(mth);
-            regionMaker.makeRegion(startBlock, stack);
 
-            // System.out.println(regionMaker.processSwitch(new Region(null), startBlock, switchBlock, stack).getId() == mth.getBasicBlocks().get(1).getId());
             assertEquals(regionMaker.processSwitch(new Region(null), startBlock, switchBlock, stack).getId(), mth.getBasicBlocks().get(1).getId());
         }
         catch (Exception e) {

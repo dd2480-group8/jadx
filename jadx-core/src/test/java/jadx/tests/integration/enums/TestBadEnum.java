@@ -18,6 +18,10 @@ import static jadx.tests.api.utils.JadxMatchers.containsLines;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+// Documentation: If the EnumVisitor is given a bad data structure,
+// it needs to recover from that and yield a desired result. Ideally,
+// it should not throw an unexpected exception. No external modifications
+// outside this test had to be done.
 public class TestBadEnum extends IntegrationTest {
 
 	public static class TestCls {
