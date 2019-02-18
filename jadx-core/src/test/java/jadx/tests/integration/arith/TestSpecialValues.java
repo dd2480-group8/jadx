@@ -1,5 +1,6 @@
 package jadx.tests.integration.arith;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -59,5 +60,7 @@ public class TestSpecialValues extends IntegrationTest {
 		assertThat(code, containsOne("Byte.MIN_VALUE, Byte.MAX_VALUE"));
 		assertThat(code, containsOne("Integer.MIN_VALUE, Integer.MAX_VALUE"));
 		assertThat(code, containsOne("Long.MIN_VALUE, Long.MAX_VALUE"));
+
+		CCTool.printReport();
 	}
 }

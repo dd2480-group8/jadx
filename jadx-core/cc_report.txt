@@ -318,6 +318,37 @@ Method: process@DebugInfoParser: 75.0
 	Branch: 30: Covered
 	Branch: 31: Covered
 
+Method: fixTypes@ConstInlineVisitor: 86.20689655172413
+	Branch: 0: Missed
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Covered
+	Branch: 8: Covered
+	Branch: 9: Covered
+	Branch: 10: Covered
+	Branch: 11: Covered
+	Branch: 12: Covered
+	Branch: 13: Missed
+	Branch: 14: Covered
+	Branch: 15: Covered
+	Branch: 16: Covered
+	Branch: 17: Covered
+	Branch: 18: Missed
+	Branch: 19: Covered
+	Branch: 20: Covered
+	Branch: 21: Covered
+	Branch: 22: Covered
+	Branch: 23: Covered
+	Branch: 24: Covered
+	Branch: 25: Covered
+	Branch: 26: Covered
+	Branch: 27: Missed
+	Branch: 28: Covered
+
 Method: visit@EnumVisitor: 77.5
 	Branch: 0: Covered
 	Branch: 1: Covered

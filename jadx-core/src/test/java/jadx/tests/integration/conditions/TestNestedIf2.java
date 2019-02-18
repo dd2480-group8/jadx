@@ -1,5 +1,6 @@
 package jadx.tests.integration.conditions;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -53,5 +54,6 @@ public class TestNestedIf2 extends IntegrationTest {
 		assertThat(code, containsOne("if (finished) {"));
 		assertThat(code, not(containsString("else")));
 
+		CCTool.printReport();
 	}
 }

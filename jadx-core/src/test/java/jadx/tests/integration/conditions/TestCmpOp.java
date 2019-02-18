@@ -1,5 +1,6 @@
 package jadx.tests.integration.conditions;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -62,5 +63,7 @@ public class TestCmpOp extends IntegrationTest {
 		assertThat(code, containsString("return 4.0f > g;"));
 		assertThat(code, containsString("return 5 < h;"));
 		assertThat(code, containsString("return 6.5d < i;"));
+
+		CCTool.printReport();
 	}
 }

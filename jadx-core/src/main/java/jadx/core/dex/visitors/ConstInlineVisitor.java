@@ -1,5 +1,6 @@
 package jadx.core.dex.visitors;
 
+import jadx.api.CCTool;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,85 +158,118 @@ public class ConstInlineVisitor extends AbstractVisitor {
 		PostTypeInference.process(mth, insn);
 		switch (insn.getType()) {
 			case CONST:
+				CCTool.set("fixTypes@ConstInlineVisitor", 0);
 				insn.getArg(0).merge(dex, insn.getResult());
 				break;
 
 			case MOVE:
+				CCTool.set("fixTypes@ConstInlineVisitor", 1);
 				insn.getResult().merge(dex, insn.getArg(0));
 				insn.getArg(0).merge(dex, insn.getResult());
 				break;
 
 			case IPUT:
+				CCTool.set("fixTypes@ConstInlineVisitor", 2);
 			case SPUT:
+				CCTool.set("fixTypes@ConstInlineVisitor", 3);
 				IndexInsnNode node = (IndexInsnNode) insn;
 				insn.getArg(0).merge(dex, ((FieldInfo) node.getIndex()).getType());
 				break;
 
 			case IF:
+				CCTool.set("fixTypes@ConstInlineVisitor", 4);
 				InsnArg firstArg = insn.getArg(0);
 				InsnArg secondArg = insn.getArg(1);
 				if (firstArg == litArg) {
+					CCTool.set("fixTypes@ConstInlineVisitor", 5);
 					firstArg.merge(dex, secondArg);
 				} else {
+					CCTool.set("fixTypes@ConstInlineVisitor", 6);
 					secondArg.merge(dex, firstArg);
 				}
 				break;
 
 			case CMP_G:
+				CCTool.set("fixTypes@ConstInlineVisitor", 7);
 			case CMP_L:
+				CCTool.set("fixTypes@ConstInlineVisitor", 8);
 				InsnArg arg0 = insn.getArg(0);
 				InsnArg arg1 = insn.getArg(1);
 				if (arg0 == litArg) {
+					CCTool.set("fixTypes@ConstInlineVisitor", 9);
 					arg0.merge(dex, arg1);
 				} else {
+					CCTool.set("fixTypes@ConstInlineVisitor", 10);
 					arg1.merge(dex, arg0);
 				}
 				break;
 
 			case RETURN:
+				CCTool.set("fixTypes@ConstInlineVisitor", 11);
 				if (insn.getArgsCount() != 0) {
+					CCTool.set("fixTypes@ConstInlineVisitor", 12);
 					insn.getArg(0).merge(dex, mth.getReturnType());
+				}else{
+					CCTool.set("fixTypes@ConstInlineVisitor", 13);
 				}
 				break;
 
 			case INVOKE:
+				CCTool.set("fixTypes@ConstInlineVisitor", 14);
 				InvokeNode inv = (InvokeNode) insn;
 				List<ArgType> types = inv.getCallMth().getArgumentsTypes();
 				int count = insn.getArgsCount();
 				int k = types.size() == count ? 0 : -1;
 				for (int i = 0; i < count; i++) {
+					CCTool.set("fixTypes@ConstInlineVisitor", 15);
 					InsnArg arg = insn.getArg(i);
 					if (!arg.getType().isTypeKnown()) {
+						CCTool.set("fixTypes@ConstInlineVisitor", 16);
 						ArgType type;
 						if (k >= 0) {
+							CCTool.set("fixTypes@ConstInlineVisitor", 17);
 							type = types.get(k);
 						} else {
+							CCTool.set("fixTypes@ConstInlineVisitor", 18);
 							type = mth.getParentClass().getClassInfo().getType();
 						}
 						arg.merge(dex, type);
+					}else{
+						CCTool.set("fixTypes@ConstInlineVisitor", 19);
 					}
 					k++;
 				}
 				break;
 
 			case ARITH:
+				CCTool.set("fixTypes@ConstInlineVisitor", 20);
 				litArg.merge(dex, insn.getResult());
 				break;
 
 			case APUT:
+				CCTool.set("fixTypes@ConstInlineVisitor", 21);
 			case AGET:
+				CCTool.set("fixTypes@ConstInlineVisitor", 22);
 				if (litArg == insn.getArg(1)) {
+					CCTool.set("fixTypes@ConstInlineVisitor", 23);
 					litArg.merge(dex, ArgType.INT);
+				}else{
+					CCTool.set("fixTypes@ConstInlineVisitor", 24);
 				}
 				break;
 
 			case NEW_ARRAY:
+				CCTool.set("fixTypes@ConstInlineVisitor", 25);
 				if (litArg == insn.getArg(0)) {
+					CCTool.set("fixTypes@ConstInlineVisitor", 26);
 					litArg.merge(dex, ArgType.INT);
+				}else{
+					CCTool.set("fixTypes@ConstInlineVisitor", 27);
 				}
 				break;
 
 			default:
+				CCTool.set("fixTypes@ConstInlineVisitor", 28);
 				break;
 		}
 	}

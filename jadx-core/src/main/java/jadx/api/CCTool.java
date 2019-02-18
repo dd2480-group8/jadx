@@ -125,6 +125,13 @@ public final class CCTool {
         }
         cc.put("process@DebugInfoParser", debugInfoParserMap);
 
+        // fixTypes in ConstInlineVisitor
+        HashMap<Integer, Boolean> fixTypesMap = new HashMap<>();
+        for (int i = 0; i < 29; i++) {
+            fixTypesMap.put(i, false);
+        }
+        cc.put("fixTypes@ConstInlineVisitor", fixTypesMap);
+
         initialized = true;
     }
 }

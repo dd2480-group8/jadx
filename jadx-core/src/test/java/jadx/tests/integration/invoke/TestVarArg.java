@@ -1,5 +1,6 @@
 package jadx.tests.integration.invoke;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -42,5 +43,7 @@ public class TestVarArg extends IntegrationTest {
 		// negative case
 		assertThat(code, containsString("void test3(int[] a) {"));
 		assertThat(code, containsString("test3(new int[]{5, 8});"));
+
+		CCTool.printReport();
 	}
 }
