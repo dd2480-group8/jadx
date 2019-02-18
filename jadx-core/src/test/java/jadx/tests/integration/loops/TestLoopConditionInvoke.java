@@ -2,12 +2,12 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
-import jadx.api.CCTool;
 
 public class TestLoopConditionInvoke extends IntegrationTest {
 
@@ -43,6 +43,7 @@ public class TestLoopConditionInvoke extends IntegrationTest {
 		assertThat(code, containsOne("return false;"));
 		assertThat(code, containsOne("} while (ch != lastChar);"));
 		assertThat(code, containsOne("return true;"));
+
 		CCTool.printReport();
 	}
 }

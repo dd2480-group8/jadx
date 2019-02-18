@@ -99,13 +99,18 @@ Our tool supports measuring any branch where a flag is put in (with a unique bra
 
 ### Evaluation
 
-Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
+Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
 
-Report of new coverage: [https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
+Report of new coverage: [https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt)
 
 Test cases added:
 
-git diff ...
+| File | git diff |
+|---|---|
+| [TestBadEnum.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java |
+| [TestBadSwitch.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java |
+
+Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
 ## Refactoring
 
@@ -120,20 +125,60 @@ git diff ...
 For each team member, how much time was spent in
 
 1. plenary discussions/meetings;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 3h
+- Shapour: 
 
 2. discussions within parts of the group;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 3. reading documentation;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 4h
+- Shapour: 
 
 4. configuration;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 1h
+- Shapour: 
 
 5. analyzing code/output;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 6. writing documentation;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 7. writing code;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 4h
+- Shapour: 
 
 8. running code?
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 1h
+- Shapour: 
 
 ## Overall experience
 

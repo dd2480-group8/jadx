@@ -2,12 +2,12 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsLines;
 import static org.junit.Assert.assertThat;
-import jadx.api.CCTool;
 
 public class TestIterableForEach extends IntegrationTest {
 
@@ -33,6 +33,7 @@ public class TestIterableForEach extends IntegrationTest {
 				"}",
 				"return sb.toString();"
 		));
+
 		CCTool.printReport();
 	}
 }

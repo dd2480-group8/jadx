@@ -2,12 +2,12 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
-import jadx.api.CCTool;
 
 public class TestLoopCondition2 extends IntegrationTest {
 
@@ -31,6 +31,7 @@ public class TestLoopCondition2 extends IntegrationTest {
 		assertThat(code, containsOne("while (a && i < 10) {"));
 		assertThat(code, containsOne("i++;"));
 		assertThat(code, containsOne("return i;"));
+
 		CCTool.printReport();
 	}
 }

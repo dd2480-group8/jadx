@@ -2,6 +2,7 @@ package jadx.tests.integration.loops;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.SmaliTest;
 
@@ -9,7 +10,6 @@ import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static jadx.tests.api.utils.JadxMatchers.countString;
 import static org.hamcrest.Matchers.anyOf;
 import static org.junit.Assert.assertThat;
-import jadx.api.CCTool;
 
 public class TestLoopCondition5 extends SmaliTest {
 
@@ -32,6 +32,7 @@ public class TestLoopCondition5 extends SmaliTest {
 		assertThat(code, containsOne("for ("));
 		assertThat(code, containsOne("return -1;"));
 		assertThat(code, countString(2, "return "));
+
 		CCTool.printReport();
 	}
 
@@ -43,6 +44,7 @@ public class TestLoopCondition5 extends SmaliTest {
 		assertThat(code, anyOf(containsOne("for ("), containsOne("while (true) {")));
 		assertThat(code, containsOne("return -1;"));
 		assertThat(code, countString(2, "return "));
+
 		CCTool.printReport();
 	}
 }
