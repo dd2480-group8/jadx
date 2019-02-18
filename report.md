@@ -64,6 +64,12 @@ Remember to count inline conditionals (foo ? ... : ...). Conditionals are within
 | process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | 31 (17, 3, 10) |
 | mergeInternal@481-549@[ArgType.java](./jadx-core/src/main/java/jadx/core/dex/instructions/args/ArgType.java) | 26 (24, 1, 0) |
 
+Our calculated results line up with each other and also with the results from Lizard, our tool. One thing that is rather unclear is whether to take exceptions into account when making the calculations or not. It would make sense to do so since an exception would affect the control flow graph, especially if you think of them as a possible branch. On the other hand an exception (in Java) often end up in a non-succesfully terminated program, so taking them into account might interfere with the complexity of the wanted outcome. In the calculated results above we have chosen to exclude exceptions. 
+
+Observing the LOC of the functions woth high CC we see that most of them are long. Given the results from the Lizard, the length don't seem to have any linear correlation to the complexity considering the follwoing pairs of CC and it's corresponding LOC (CC,LOC): (32, 39), (34, 125), (25, 80). However, if we look at more distinct CC values we notice some correlation: (34, 125), (60, 255), (222, 407). One reason could be that in general, if you write more lines of code you're more likely to introduce complexity along the way, but other aspects such as the functionality of the code may also be a key factor. Which would explain why we see a clear increasement of CC with high difference in LOC, but there also exist a variety of CC in codes that are more similar in length. For example decode@86-583@[InsnDecoder.java] obviously need to handle a variety of cases and conditionals which explains the high complexity value. 
+
+Documentation for the induced outcome of branches in the functions are rather non-existent in this project. 
+
 ## Coverage
 
 ### Tools
