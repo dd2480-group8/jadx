@@ -71,7 +71,7 @@ public final class CCTool {
         for (int i = 0; i < 40; i++) {
             visitMap.put(i, false);
         }
-        cc.put("visit@EnumVisitor", processSwitchMap);
+        cc.put("visit@EnumVisitor", visitMap);
 
         // TODO: Add maps for the other functions.
 
