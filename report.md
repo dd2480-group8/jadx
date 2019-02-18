@@ -125,20 +125,60 @@ git diff ...
 For each team member, how much time was spent in
 
 1. plenary discussions/meetings;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 3h
+- Shapour: 
 
 2. discussions within parts of the group;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 3. reading documentation;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 4h
+- Shapour: 
 
 4. configuration;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 1h
+- Shapour: 
 
 5. analyzing code/output;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 6. writing documentation;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 0.5h
+- Shapour: 
 
 7. writing code;
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 4h
+- Shapour: 
 
 8. running code?
+- Jonathan: 
+- Ludvig: 
+- Michelle: 
+- Simon: 1h
+- Shapour: 
 
 ## Overall experience
 
