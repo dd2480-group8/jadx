@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -67,5 +68,6 @@ public class TestTryCatchFinally5 extends IntegrationTest {
 		assertThat(code, containsOne("} finally {"));
 		// TODO: remove duplicates on multiple paths
 //		assertThat(code, containsOne("d.close();"));
+		CCTool.printReport();
 	}
 }

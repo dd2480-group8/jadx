@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -59,5 +60,6 @@ public class TestFinally2 extends IntegrationTest {
 		assertThat(code, containsOne("decode(inputStream);"));
 		// TODO
 		// assertThat(code, not(containsOne("result =")));
+		CCTool.printReport();
 	}
 }

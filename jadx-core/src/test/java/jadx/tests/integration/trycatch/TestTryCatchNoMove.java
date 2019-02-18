@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.SmaliTest;
 
@@ -27,5 +28,6 @@ public class TestTryCatchNoMove extends SmaliTest {
 		assertThat(code, containsOne("if (autoCloseable != null) {"));
 		assertThat(code, containsOne("try {"));
 		assertThat(code, containsOne("autoCloseable.close();"));
+		CCTool.printReport();
 	}
 }

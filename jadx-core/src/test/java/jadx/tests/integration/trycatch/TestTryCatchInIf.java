@@ -2,6 +2,7 @@ package jadx.tests.integration.trycatch;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -48,5 +49,6 @@ public class TestTryCatchInIf extends IntegrationTest {
 
 		assertThat(code, containsOne("try {"));
 		assertThat(code, containsOne("} catch (NumberFormatException e) {"));
+		CCTool.printReport();
 	}
 }

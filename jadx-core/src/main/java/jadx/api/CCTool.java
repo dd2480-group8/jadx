@@ -74,6 +74,12 @@ public final class CCTool {
         cc.put("visit@EnumVisitor", visitMap);
 
         // TODO: Add maps for the other functions.
+        // extractFinally in BlockFinallyExtract
+        HashMap<Integer, Boolean> extractFinallyMap = new HashMap<>();
+        for (int i = 0; i < 49; i++) {
+            extractFinallyMap.put(i, false);
+        }
+        cc.put("extractFinally@BlockFinallyExtract", extractFinallyMap);
 
         initialized = true;
     }
