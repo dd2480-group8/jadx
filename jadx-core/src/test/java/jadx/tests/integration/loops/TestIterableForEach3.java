@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -11,11 +12,11 @@ import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
 
 public class TestIterableForEach3 extends IntegrationTest {
-
+	
 	public static class TestCls<T extends String> {
 		private Set<T> a;
 		private Set<T> b;
-
+		
 		private void test(T str) {
 			Set<T> set = str.length() == 1 ? a : b;
 			for (T s : set) {
@@ -30,14 +31,16 @@ public class TestIterableForEach3 extends IntegrationTest {
 			}
 		}
 	}
-
+	
 	@Test
 	public void test() {
 		ClassNode cls = getClassNode(TestCls.class);
 		String code = cls.getCode().toString();
-
+		
 		assertThat(code, containsOne("for (T s : set) {"));
 		assertThat(code, containsOne("if (str.length() == 0) {"));
 		// TODO move return outside 'if'
+		
+		CCTool.printReport();
 	}
 }
