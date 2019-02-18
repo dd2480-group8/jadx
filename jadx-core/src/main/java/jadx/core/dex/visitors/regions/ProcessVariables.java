@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import jadx.api.CCTool;
 import jadx.core.dex.attributes.AFlag;
 import jadx.core.dex.attributes.AType;
 import jadx.core.dex.attributes.nodes.DeclareVariablesAttr;
@@ -169,12 +170,16 @@ public class ProcessVariables extends AbstractVisitor {
 	@Override
 	public void visit(MethodNode mth) throws JadxException {
 		if (mth.isNoCode()) {
+			CCTool.set("visit@ProcessVariables", 0);
 			return;
+		} else {
+			CCTool.set("visit@ProcessVariables", 1);
 		}
 		List<RegisterArg> mthArguments = mth.getArguments(true);
 
 		Map<Variable, Usage> usageMap = new LinkedHashMap<>();
 		for (RegisterArg arg : mthArguments) {
+			CCTool.set("visit@ProcessVariables", 2);
 			addToUsageMap(arg, usageMap);
 		}
 
@@ -184,81 +189,119 @@ public class ProcessVariables extends AbstractVisitor {
 
 		// reduce assigns map
 		for (RegisterArg arg : mthArguments) {
+			CCTool.set("visit@ProcessVariables", 3);
 			usageMap.remove(new Variable(arg));
 		}
 
 		Iterator<Entry<Variable, Usage>> umIt = usageMap.entrySet().iterator();
 		while (umIt.hasNext()) {
+			CCTool.set("visit@ProcessVariables", 4);
 			Entry<Variable, Usage> entry = umIt.next();
 			Usage u = entry.getValue();
 			// if no assigns => remove
 			if (u.getAssigns().isEmpty()) {
+				CCTool.set("visit@ProcessVariables", 5);
 				umIt.remove();
 				continue;
+			} else {
+				CCTool.set("visit@ProcessVariables", 6);
 			}
 
 			// variable declared at 'catch' clause
 			InsnNode parentInsn = u.getArg().getParentInsn();
 			if (parentInsn == null || parentInsn.getType() == InsnType.MOVE_EXCEPTION) {
+				CCTool.set("visit@ProcessVariables", 7);
 				umIt.remove();
+			} else {
+				CCTool.set("visit@ProcessVariables", 8);
 			}
 		}
 		if (usageMap.isEmpty()) {
+			CCTool.set("visit@ProcessVariables", 9);
 			return;
+		} else {
+			CCTool.set("visit@ProcessVariables", 10);
 		}
 
 		for (Iterator<Entry<Variable, Usage>> it = usageMap.entrySet().iterator(); it.hasNext(); ) {
+			CCTool.set("visit@ProcessVariables", 11);
 			Entry<Variable, Usage> entry = it.next();
 			Usage u = entry.getValue();
 			// check if variable can be declared at current assigns
 			for (IRegion assignRegion : u.getAssigns()) {
+				CCTool.set("visit@ProcessVariables", 12);
 				if (u.getArgRegion() == assignRegion
 						&& canDeclareInRegion(u, assignRegion)
 						&& declareAtAssign(u)) {
+					CCTool.set("visit@ProcessVariables", 13);
 					it.remove();
 					break;
+				} else {
+					CCTool.set("visit@ProcessVariables", 14);
 				}
 			}
 		}
 		if (usageMap.isEmpty()) {
+			CCTool.set("visit@ProcessVariables", 15);
 			return;
+		} else {
+			CCTool.set("visit@ProcessVariables", 16);
 		}
 
 		// apply
 		for (Entry<Variable, Usage> entry : usageMap.entrySet()) {
+			CCTool.set("visit@ProcessVariables", 17);
 			Usage u = entry.getValue();
 
 			// find region which contain all usage regions
 			Set<IRegion> set = u.getUseRegions();
 			for (Iterator<IRegion> it = set.iterator(); it.hasNext(); ) {
+				CCTool.set("visit@ProcessVariables", 18);
 				IRegion r = it.next();
 				IRegion parent = r.getParent();
 				if (parent != null && set.contains(parent)) {
+					CCTool.set("visit@ProcessVariables", 19);
 					it.remove();
+				} else {
+					CCTool.set("visit@ProcessVariables", 20);
 				}
 			}
 			IRegion region = null;
 			if (!set.isEmpty()) {
+				CCTool.set("visit@ProcessVariables", 21);
 				region = set.iterator().next();
 			} else if (!u.getAssigns().isEmpty()) {
+				CCTool.set("visit@ProcessVariables", 22);
 				region = u.getAssigns().iterator().next();
+			} else {
+				CCTool.set("visit@ProcessVariables", 23);
 			}
 			if (region == null) {
+				CCTool.set("visit@ProcessVariables", 24);
 				continue;
+			} else {
+				CCTool.set("visit@ProcessVariables", 25);
 			}
 			IRegion parent = region;
 			boolean declared = false;
 			while (parent != null) {
+				CCTool.set("visit@ProcessVariables", 26);
 				if (canDeclareInRegion(u, region)) {
+					CCTool.set("visit@ProcessVariables", 27);
 					declareVar(region, u.getArg());
 					declared = true;
 					break;
+				} else {
+					CCTool.set("visit@ProcessVariables", 28);
 				}
 				region = parent;
 				parent = region.getParent();
 			}
 			if (!declared) {
+				CCTool.set("visit@ProcessVariables", 29);
 				declareVar(mth.getRegion(), u.getArg());
+			} else {
+				CCTool.set("visit@ProcessVariables", 30);
 			}
 		}
 	}
