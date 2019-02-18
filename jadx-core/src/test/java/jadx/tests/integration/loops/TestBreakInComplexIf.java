@@ -11,6 +11,7 @@ import jadx.tests.api.IntegrationTest;
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestBreakInComplexIf extends IntegrationTest {
 
@@ -43,6 +44,8 @@ public class TestBreakInComplexIf extends IntegrationTest {
 			map.put("3", new Point(100, 100));
 			map.put("4", new Point(60, 100));
 			assertThat(test(map, 2), is(3));
+
+			CCTool.printReport();
 		}
 	}
 
@@ -53,6 +56,8 @@ public class TestBreakInComplexIf extends IntegrationTest {
 
 		assertThat(code, containsOne("if (tile == null || tile.y != 100) {"));
 		assertThat(code, containsOne("break;"));
+
+		CCTool.printReport();
 	}
 
 	@Test
@@ -61,5 +66,7 @@ public class TestBreakInComplexIf extends IntegrationTest {
 		ClassNode cls = getClassNode(TestCls.class);
 		String code = cls.getCode().toString();
 		assertThat(code, containsOne("break;"));
+
+		CCTool.printReport();
 	}
 }

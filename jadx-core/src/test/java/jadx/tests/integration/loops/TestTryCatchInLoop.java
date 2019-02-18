@@ -8,6 +8,7 @@ import jadx.tests.api.IntegrationTest;
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestTryCatchInLoop extends IntegrationTest {
 
@@ -49,5 +50,6 @@ public class TestTryCatchInLoop extends IntegrationTest {
 
 		assertThat(code, containsOne("} catch (Exception e) {"));
 		assertThat(code, containsOne("break;"));
+		CCTool.printReport();
 	}
 }

@@ -55,7 +55,7 @@ public class TestLoopCondition extends IntegrationTest {
 		assertThat(code, containsOne("if (j == 2) {"));
 		assertThat(code, containsOne("setEnabled(true);"));
 		assertThat(code, containsOne("setEnabled(false);"));
-	
+
 		CCTool.printReport();
 	}
 }

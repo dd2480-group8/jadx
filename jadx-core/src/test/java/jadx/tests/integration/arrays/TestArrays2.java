@@ -2,6 +2,7 @@ package jadx.tests.integration.arrays;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -38,5 +39,6 @@ public class TestArrays2 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsOne("new int[]{1, 2}"));
+		CCTool.printReport();
 	}
 }

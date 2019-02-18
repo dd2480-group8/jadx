@@ -2,6 +2,7 @@ package jadx.tests.integration.arrays;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -31,5 +32,6 @@ public class TestArrayFill2 extends IntegrationTest {
 
 		// TODO
 		// assertThat(code, containsString("return new int[]{1, a++, a * 2};"));
+		CCTool.printReport();
 	}
 }

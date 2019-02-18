@@ -1,5 +1,6 @@
 package jadx.tests.integration.arrays;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.SmaliTest;
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
@@ -29,6 +30,7 @@ public class TestArrays4 extends SmaliTest {
         String code = cls.getCode().toString();
 
         assertThat(code, containsOne("char[] toChars = toChars(bArr);"));
+        CCTool.printReport();
     }
 
 }

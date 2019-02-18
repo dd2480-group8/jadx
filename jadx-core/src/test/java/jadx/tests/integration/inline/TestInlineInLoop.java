@@ -8,6 +8,7 @@ import jadx.tests.api.IntegrationTest;
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static jadx.tests.api.utils.JadxMatchers.countString;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestInlineInLoop extends IntegrationTest {
 
@@ -43,5 +44,7 @@ public class TestInlineInLoop extends IntegrationTest {
 		assertThat(code, containsOne("b++;"));
 		assertThat(code, containsOne("b = c"));
 		assertThat(code, containsOne("a++;"));
+
+		CCTool.printReport();
 	}
 }

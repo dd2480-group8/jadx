@@ -35,7 +35,7 @@ public class TestLoopCondition4 extends IntegrationTest {
 		assertThat(code, containsOne("while (n > 11) {"));
 		assertThat(code, containsOne("n -= 12;"));
 		assertThat(code, containsOne("System.out.println(n);"));
-		
+
 		CCTool.printReport();
 	}
 }

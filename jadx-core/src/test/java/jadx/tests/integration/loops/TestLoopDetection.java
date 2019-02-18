@@ -8,6 +8,7 @@ import jadx.tests.api.IntegrationTest;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestLoopDetection extends IntegrationTest {
 
@@ -37,5 +38,6 @@ public class TestLoopDetection extends IntegrationTest {
 		assertThat(code, containsString("int i = 0;"));
 		assertThat(code, not(containsString("i_2")));
 		assertThat(code, containsString("i++;"));
+		CCTool.printReport();
 	}
 }

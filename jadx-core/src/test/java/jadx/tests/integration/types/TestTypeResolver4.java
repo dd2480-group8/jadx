@@ -10,6 +10,7 @@ import jadx.tests.api.IntegrationTest;
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestTypeResolver4 extends IntegrationTest {
 
@@ -42,11 +43,13 @@ public class TestTypeResolver4 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsOne("(strArray[end] != (byte) 0 || strArray[end + 1] != (byte) 0)"));
+		CCTool.printReport();
 	}
 
 	@Test
 	public void test2() {
 		noDebugInfo();
 		getClassNode(TestCls.class);
+		CCTool.printReport();
 	}
 }

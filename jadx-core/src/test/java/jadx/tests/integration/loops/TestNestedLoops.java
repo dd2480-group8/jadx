@@ -9,6 +9,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestNestedLoops extends IntegrationTest {
 
@@ -42,5 +43,6 @@ public class TestNestedLoops extends IntegrationTest {
 		assertThat(code, containsOne("if (s1.equals(s2)) {"));
 		assertThat(code, containsOne("l2.add(s1);"));
 		assertThat(code, containsOne("l1.remove(s2);"));
+		CCTool.printReport();
 	}
 }

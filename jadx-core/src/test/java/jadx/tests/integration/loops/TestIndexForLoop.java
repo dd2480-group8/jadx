@@ -7,6 +7,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsLines;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestIndexForLoop extends IntegrationTest {
 
@@ -33,5 +34,6 @@ public class TestIndexForLoop extends IntegrationTest {
 				"}",
 				"return sum;"
 		));
+		CCTool.printReport();
 	}
 }
