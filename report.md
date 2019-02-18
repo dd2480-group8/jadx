@@ -99,9 +99,9 @@ Our tool supports measuring any branch where a flag is put in (with a unique bra
 
 ### Evaluation
 
-Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
+Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
 
-Report of new coverage: [link]
+Report of new coverage: [https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
 
 Test cases added:
 
