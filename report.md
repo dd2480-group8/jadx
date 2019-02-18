@@ -21,7 +21,7 @@ The project builds easily and as documented. It uses gradle which is self-contai
    * Are the results clear? **Answer: Yes. Especially when looking into the most complex ones.**
 2. Are the functions just complex, or also long? **Answer: Some of them are. Generally though they are very nested with branches.**
 3. What is the purpose of the functions? **Answer: See table below. Some of them are related to the high CC. With many switch cases, because it needs to handle many different types of scenarios (OP codes). Although it could be simplified.**
-4. Are exceptions taken into account in the given measurements? **Answer: Our program does not use exception in the functions.**
+4. Are exceptions taken into account in the given measurements? **Answer: Our program does not use exceptions in the functions.**
 5. Is the documentation clear w.r.t. all the possible outcomes? **Answer: Not all of the functions. Some are.**
 
 **Results from Lizard**
@@ -74,10 +74,9 @@ Documentation for the induced outcome of branches in the functions are rather no
 
 ### Tools
 
-Document your experience in using a "new"/different coverage tool.
+As instructed in the assignment, we implemented a manual coverage tool in the code. It was pretty tricky due to the size of the project and the nature of how the tests are run. Because the project is dealing with decompilation, much of the tests are run on code that is compiled. There was no entry point for all the tests, so the instrumentation had to be enforced in many places. The tool itself is small and can be seen here: [CCTool](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/src/main/java/jadx/api/CCTool.java).
 
-How well was the tool documented? Was it possible/easy/difficult to
-integrate it with your build environment?
+In addition to our manual tool. The project runs Codecov which displays the code coverage as well. This can be explored here: [https://codecov.io/gh/skylot/jadx](https://codecov.io/gh/skylot/jadx). Our tool is a bit more granular as we measure individual methods, while Codecov measures the entire source file. However, both our tool and Codecov will discover areas that are not covered by tests.
 
 ### DYI
 
@@ -94,7 +93,7 @@ its output?
 
 ### Evaluation
 
-Report of old coverage: [link]
+Report of old coverage: [https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt](https://github.com/dd2480-group8/jadx/blob/cc/jadx-core/cc_report.txt)
 
 Report of new coverage: [link]
 
