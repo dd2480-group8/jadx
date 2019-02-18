@@ -9,6 +9,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestIterableForEach3 extends IntegrationTest {
 
@@ -38,6 +39,7 @@ public class TestIterableForEach3 extends IntegrationTest {
 
 		assertThat(code, containsOne("for (T s : set) {"));
 		assertThat(code, containsOne("if (str.length() == 0) {"));
+		CCTool.printReport();
 		// TODO move return outside 'if'
 	}
 }

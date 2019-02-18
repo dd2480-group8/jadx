@@ -7,6 +7,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestLoopCondition4 extends IntegrationTest {
 
@@ -34,5 +35,6 @@ public class TestLoopCondition4 extends IntegrationTest {
 		assertThat(code, containsOne("while (n > 11) {"));
 		assertThat(code, containsOne("n -= 12;"));
 		assertThat(code, containsOne("System.out.println(n);"));
+		CCTool.printReport();
 	}
 }

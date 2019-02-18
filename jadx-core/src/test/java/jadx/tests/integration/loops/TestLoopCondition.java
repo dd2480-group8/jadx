@@ -7,6 +7,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestLoopCondition extends IntegrationTest {
 
@@ -54,5 +55,6 @@ public class TestLoopCondition extends IntegrationTest {
 		assertThat(code, containsOne("if (j == 2) {"));
 		assertThat(code, containsOne("setEnabled(true);"));
 		assertThat(code, containsOne("setEnabled(false);"));
+		CCTool.printReport();
 	}
 }

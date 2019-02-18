@@ -7,6 +7,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestLoopDetection3 extends IntegrationTest {
 
@@ -39,5 +40,6 @@ public class TestLoopDetection3 extends IntegrationTest {
 		assertThat(code, containsString("while"));
 		// TODO
 		// assertThat(code, containsString("while (--pos >= 0) {"));
+		CCTool.printReport();
 	}
 }

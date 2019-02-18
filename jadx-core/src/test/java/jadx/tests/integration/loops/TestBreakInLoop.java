@@ -8,6 +8,7 @@ import jadx.tests.api.IntegrationTest;
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static jadx.tests.api.utils.JadxMatchers.countString;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestBreakInLoop extends IntegrationTest {
 
@@ -37,5 +38,6 @@ public class TestBreakInLoop extends IntegrationTest {
 		assertThat(code, containsOne("this.f++;"));
 
 		assertThat(code, countString(0, "else"));
+		CCTool.printReport();
 	}
 }

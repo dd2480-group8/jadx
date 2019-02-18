@@ -11,6 +11,7 @@ import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import jadx.api.CCTool;
 
 public class TestBreakWithLabel extends IntegrationTest {
 

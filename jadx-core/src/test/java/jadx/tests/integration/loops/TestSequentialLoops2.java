@@ -9,6 +9,7 @@ import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static jadx.tests.api.utils.JadxMatchers.countString;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestSequentialLoops2 extends IntegrationTest {
 
@@ -47,5 +48,6 @@ public class TestSequentialLoops2 extends IntegrationTest {
 		assertThat(code, containsString("break;"));
 		assertThat(code, containsOne("return c"));
 		assertThat(code, countString(2, "<= 127"));
+		CCTool.printReport();
 	}
 }

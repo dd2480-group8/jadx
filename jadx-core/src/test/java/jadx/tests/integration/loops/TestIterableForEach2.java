@@ -10,6 +10,7 @@ import jadx.tests.api.IntegrationTest;
 
 import static jadx.tests.api.utils.JadxMatchers.containsOne;
 import static org.junit.Assert.assertThat;
+import jadx.api.CCTool;
 
 public class TestIterableForEach2 extends IntegrationTest {
 
@@ -48,5 +49,6 @@ public class TestIterableForEach2 extends IntegrationTest {
 		assertThat(code, containsOne("for (Authorization auth : service.getAuthorizations()) {"));
 		assertThat(code, containsOne("if (isValid(auth)) {"));
 		assertThat(code, containsOne("return auth.getToken();"));
+		CCTool.printReport();
 	}
 }
