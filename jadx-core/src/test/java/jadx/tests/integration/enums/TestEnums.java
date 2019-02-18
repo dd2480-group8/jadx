@@ -2,6 +2,7 @@ package jadx.tests.integration.enums;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -66,5 +67,7 @@ public class TestEnums extends IntegrationTest {
 				indent(2) + "return \"\";",
 				indent(1) + "}",
 				"}"));
+
+				CCTool.printReport();
 	}
 }

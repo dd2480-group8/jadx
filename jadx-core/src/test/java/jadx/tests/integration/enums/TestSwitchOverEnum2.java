@@ -2,6 +2,7 @@ package jadx.tests.integration.enums;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -53,5 +54,7 @@ public class TestSwitchOverEnum2 extends IntegrationTest {
 		assertThat(code, countString(2, "switch (c) {"));
 		assertThat(code, countString(2, "case ONE:"));
 		assertThat(code, countString(2, "case DOG:"));
+
+		CCTool.printReport();
 	}
 }

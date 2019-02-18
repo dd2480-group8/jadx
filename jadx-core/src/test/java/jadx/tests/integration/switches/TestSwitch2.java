@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -66,5 +67,7 @@ public class TestSwitch2 extends IntegrationTest {
 		// TODO: remove redundant break and returns
 		assertThat(code, countString(5, "break;"));
 		assertThat(code, countString(4, "return;"));
+
+		CCTool.printReport();
 	}
 }

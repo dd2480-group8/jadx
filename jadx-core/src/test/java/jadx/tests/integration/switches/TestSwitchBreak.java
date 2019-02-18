@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -47,5 +48,7 @@ public class TestSwitchBreak extends IntegrationTest {
 
 		// TODO finish break with label from switch
 		assertThat(code, containsOne("return s + \"+\";"));
+
+		CCTool.printReport();
 	}
 }

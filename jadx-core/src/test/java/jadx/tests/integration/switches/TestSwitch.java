@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -49,5 +50,7 @@ public class TestSwitch extends IntegrationTest {
 
 		assertEquals(1, count(code, "i++"));
 		assertEquals(4, count(code, "break;"));
+
+		CCTool.printReport();
 	}
 }

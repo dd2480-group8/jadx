@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -49,5 +50,7 @@ public class TestSwitchReturnFromCase extends IntegrationTest {
 		assertThat(code, containsOne("s = \"2\";"));
 		assertThat(code, containsOne("s = \"4\";"));
 		assertThat(code, containsOne("s = \"5\";"));
+
+		CCTool.printReport();
 	}
 }

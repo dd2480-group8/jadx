@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -45,6 +46,8 @@ public class TestSwitchLabels extends IntegrationTest {
 		cls.addInnerClass(getClassNode(TestCls.Inner.class));
 		assertThat(code, not(containsString("case CONST_CDE_PRIVATE")));
 		assertThat(code, containsString(".CONST_ABC;"));
+
+		CCTool.printReport();
 	}
 
 	@Test
@@ -61,5 +64,7 @@ public class TestSwitchLabels extends IntegrationTest {
 		cls.addInnerClass(getClassNode(TestCls.Inner.class));
 		assertThat(code, not(containsString("case CONST_CDE_PRIVATE")));
 		assertThat(code, not(containsString(".CONST_ABC;")));
+
+		CCTool.printReport();
 	}
 }

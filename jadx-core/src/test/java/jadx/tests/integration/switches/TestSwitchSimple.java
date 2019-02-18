@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -47,5 +48,7 @@ public class TestSwitchSimple extends IntegrationTest {
 
 		assertThat(code, not(containsString("switch ((a % 4)) {")));
 		assertThat(code, containsString("switch (a % 4) {"));
+
+		CCTool.printReport();
 	}
 }

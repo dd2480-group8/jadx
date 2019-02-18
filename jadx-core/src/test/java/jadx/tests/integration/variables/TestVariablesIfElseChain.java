@@ -59,5 +59,6 @@ public class TestVariablesIfElseChain extends IntegrationTest {
 
 		assertThat(code, containsOne("return \"miss\";"));
 		// and compilable
+
 	}
 }

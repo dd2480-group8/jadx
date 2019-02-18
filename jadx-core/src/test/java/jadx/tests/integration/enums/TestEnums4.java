@@ -2,6 +2,7 @@ package jadx.tests.integration.enums;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -46,5 +47,7 @@ public class TestEnums4 extends IntegrationTest {
 		assertThat(code, containsOne("CODE(\".dex\", \".class\"),"));
 		assertThat(code, containsOne("ResType(String... exts) {"));
 //		assertThat(code, not(containsString("private ResType")));
+
+		CCTool.printReport();
 	}
 }

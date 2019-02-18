@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -37,5 +38,7 @@ public class TestSwitchNoDefault extends IntegrationTest {
 
 		assertEquals(4, count(code, "break;"));
 		assertEquals(1, count(code, "System.out.println(s);"));
+
+		CCTool.printReport();
 	}
 }

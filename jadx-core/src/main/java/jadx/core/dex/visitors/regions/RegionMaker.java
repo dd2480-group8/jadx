@@ -12,6 +12,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jadx.api.CCTool;
 import jadx.core.dex.attributes.AFlag;
 import jadx.core.dex.attributes.AType;
 import jadx.core.dex.attributes.nodes.EdgeInsnAttr;
@@ -705,6 +706,7 @@ public class RegionMaker {
 		// sort by target
 		Map<BlockNode, List<Object>> blocksMap = new LinkedHashMap<>(len);
 		for (int i = 0; i < len; i++) {
+			CCTool.set("processSwitch@RegionMaker", 0);
 			Object key = insn.getKeys()[i];
 			BlockNode targ = insn.getTargetBlocks()[i];
 			List<Object> keys = blocksMap.computeIfAbsent(targ, k -> new ArrayList<>(2));
@@ -712,7 +714,11 @@ public class RegionMaker {
 		}
 		BlockNode defCase = insn.getDefTargetBlock();
 		if (defCase != null) {
+			CCTool.set("processSwitch@RegionMaker", 1);
 			blocksMap.remove(defCase);
+		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 2);
 		}
 		LoopInfo loop = mth.getLoopForBlock(block);
 
@@ -722,30 +728,46 @@ public class RegionMaker {
 		BitSet outs = new BitSet(basicBlocks.size());
 		outs.or(block.getDomFrontier());
 		for (BlockNode s : block.getCleanSuccessors()) {
+			CCTool.set("processSwitch@RegionMaker", 3);
 			BitSet df = s.getDomFrontier();
 			// fall through case block
 			if (df.cardinality() > 1) {
+				CCTool.set("processSwitch@RegionMaker", 4);
 				if (df.cardinality() > 2) {
+					CCTool.set("processSwitch@RegionMaker", 5);
 					LOG.debug("Unexpected case pattern, block: {}, mth: {}", s, mth);
 				} else {
+					CCTool.set("processSwitch@RegionMaker", 6);
 					BlockNode first = basicBlocks.get(df.nextSetBit(0));
 					BlockNode second = basicBlocks.get(df.nextSetBit(first.getId() + 1));
 					if (second.getDomFrontier().get(first.getId())) {
+						CCTool.set("processSwitch@RegionMaker", 7);
 						fallThroughCases.put(s, second);
 						df = new BitSet(df.size());
 						df.set(first.getId());
 					} else if (first.getDomFrontier().get(second.getId())) {
+						CCTool.set("processSwitch@RegionMaker", 8);
 						fallThroughCases.put(s, first);
 						df = new BitSet(df.size());
 						df.set(second.getId());
 					}
+					else {
+						CCTool.set("processSwitch@RegionMaker", 9);
+					}
 				}
+			}
+			else {
+				CCTool.set("processSwitch@RegionMaker", 10);
 			}
 			outs.or(df);
 		}
 		outs.clear(block.getId());
 		if (loop != null) {
+			CCTool.set("processSwitch@RegionMaker", 11);
 			outs.clear(loop.getStart().getId());
+		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 12);
 		}
 
 		stack.push(sw);
@@ -754,85 +776,144 @@ public class RegionMaker {
 		// check cases order if fall through case exists
 		if (!fallThroughCases.isEmpty()
 				&& isBadCasesOrder(blocksMap, fallThroughCases)) {
+			CCTool.set("processSwitch@RegionMaker", 13);
 			LOG.debug("Fixing incorrect switch cases order, method: {}", mth);
 			blocksMap = reOrderSwitchCases(blocksMap, fallThroughCases);
 			if (isBadCasesOrder(blocksMap, fallThroughCases)) {
+				CCTool.set("processSwitch@RegionMaker", 14);
 				LOG.error("Can't fix incorrect switch cases order, method: {}", mth);
 				mth.add(AFlag.INCONSISTENT_CODE);
 			}
+			else {
+				CCTool.set("processSwitch@RegionMaker", 15);
+			}
+		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 16);
 		}
 
 		// filter 'out' block
 		if (outs.cardinality() > 1) {
+			CCTool.set("processSwitch@RegionMaker", 17);
 			// remove exception handlers
 			BlockUtils.cleanBitSet(mth, outs);
 		}
 		if (outs.cardinality() > 1) {
+			CCTool.set("processSwitch@RegionMaker", 18);
 			// filter loop start and successors of other blocks
 			for (int i = outs.nextSetBit(0); i >= 0; i = outs.nextSetBit(i + 1)) {
+				CCTool.set("processSwitch@RegionMaker", 19);
 				BlockNode b = basicBlocks.get(i);
 				outs.andNot(b.getDomFrontier());
 				if (b.contains(AFlag.LOOP_START)) {
+					CCTool.set("processSwitch@RegionMaker", 20);
 					outs.clear(b.getId());
 				} else {
+					CCTool.set("processSwitch@RegionMaker", 21);
 					for (BlockNode s : b.getCleanSuccessors()) {
+						CCTool.set("processSwitch@RegionMaker", 22);
 						outs.clear(s.getId());
 					}
 				}
 			}
 		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 23);
+		}
 
 		if (loop != null && outs.cardinality() > 1) {
+			CCTool.set("processSwitch@RegionMaker", 24);
 			outs.clear(loop.getEnd().getId());
 		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 25);
+		}
 		if (outs.cardinality() == 0) {
+			CCTool.set("processSwitch@RegionMaker", 26);
 			// one or several case blocks are empty,
 			// run expensive algorithm for find 'out' block
 			for (BlockNode maybeOut : block.getSuccessors()) {
+				CCTool.set("processSwitch@RegionMaker", 27);
 				boolean allReached = true;
 				for (BlockNode s : block.getSuccessors()) {
+					CCTool.set("processSwitch@RegionMaker", 28);
 					if (!isPathExists(s, maybeOut)) {
+						CCTool.set("processSwitch@RegionMaker", 29);
 						allReached = false;
 						break;
 					}
+					else {
+						CCTool.set("processSwitch@RegionMaker", 30);
+					}
 				}
 				if (allReached) {
+					CCTool.set("processSwitch@RegionMaker", 31);
 					outs.set(maybeOut.getId());
 					break;
 				}
+				else {
+					CCTool.set("processSwitch@RegionMaker", 32);
+				}
 			}
+		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 33);
 		}
 		BlockNode out = null;
 		if (outs.cardinality() == 1) {
+			CCTool.set("processSwitch@RegionMaker", 34);
 			out = basicBlocks.get(outs.nextSetBit(0));
 			stack.addExit(out);
 		} else if (loop == null && outs.cardinality() > 1) {
+			CCTool.set("processSwitch@RegionMaker", 35);
 			LOG.warn("Can't detect out node for switch block: {} in {}", block, mth);
 		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 36);
+		}
 		if (loop != null) {
+			CCTool.set("processSwitch@RegionMaker", 37);
 			// check if 'continue' must be inserted
 			BlockNode end = loop.getEnd();
 			if (out != end && out != null) {
+				CCTool.set("processSwitch@RegionMaker", 38);
 				insertContinueInSwitch(block, out, end);
 			}
+			else {
+				CCTool.set("processSwitch@RegionMaker", 39);
+			}
+		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 40);
 		}
 
 		if (!stack.containsExit(defCase)) {
+			CCTool.set("processSwitch@RegionMaker", 41);
 			sw.setDefaultCase(makeRegion(defCase, stack));
 		}
+		else {
+			CCTool.set("processSwitch@RegionMaker", 42);
+		}
 		for (Entry<BlockNode, List<Object>> entry : blocksMap.entrySet()) {
+			CCTool.set("processSwitch@RegionMaker", 43);
 			BlockNode caseBlock = entry.getKey();
 			if (stack.containsExit(caseBlock)) {
+				CCTool.set("processSwitch@RegionMaker", 44);
 				// empty case block
 				sw.addCase(entry.getValue(), new Region(stack.peekRegion()));
 			} else {
+				CCTool.set("processSwitch@RegionMaker", 45);
 				BlockNode next = fallThroughCases.get(caseBlock);
 				stack.addExit(next);
 				Region caseRegion = makeRegion(caseBlock, stack);
 				stack.removeExit(next);
 				if (next != null) {
+					CCTool.set("processSwitch@RegionMaker", 46);
 					next.add(AFlag.FALL_THROUGH);
 					caseRegion.add(AFlag.FALL_THROUGH);
+				}
+				else {
+					CCTool.set("processSwitch@RegionMaker", 47);
 				}
 				sw.addCase(entry.getValue(), caseRegion);
 				// 'break' instruction will be inserted in RegionMakerVisitor.PostRegionVisitor

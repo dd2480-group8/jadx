@@ -1,5 +1,6 @@
 package jadx.tests.integration.switches;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 import org.junit.Test;
@@ -40,5 +41,7 @@ public class TestSwitchReturnFromCase2 extends IntegrationTest {
 		String code = cls.getCode().toString();
 
 		assertThat(code, containsString("switch (a % 4) {"));
+
+		CCTool.printReport();
 	}
 }

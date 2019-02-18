@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -63,5 +64,7 @@ public class TestSwitchWithFallThroughCase2 extends IntegrationTest {
 		assertThat(code, containsOne("switch (a % 4) {"));
 		assertThat(code, containsOne("if (a == 5 && b) {"));
 		assertThat(code, containsOne("if (b) {"));
+
+		CCTool.printReport();
 	}
 }

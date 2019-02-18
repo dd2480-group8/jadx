@@ -2,6 +2,7 @@ package jadx.tests.integration.enums;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -45,5 +46,7 @@ public class TestEnums3 extends IntegrationTest {
 //		assertThat(code, containsOne("THREE(three)"));
 //		assertThat(code, containsOne("assertTrue(Numbers.ONE.getNum() == 1);"));
 		assertThat(code, containsOne("private Numbers(int n) {"));
+
+		CCTool.printReport();
 	}
 }

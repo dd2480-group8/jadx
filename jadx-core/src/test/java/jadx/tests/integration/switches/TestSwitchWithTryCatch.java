@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -67,5 +68,7 @@ public class TestSwitchWithTryCatch extends IntegrationTest {
 
 		// TODO: remove redundant break
 		assertThat(code, countString(4, "break;"));
+
+		CCTool.printReport();
 	}
 }

@@ -2,6 +2,7 @@ package jadx.tests.integration.switches;
 
 import org.junit.Test;
 
+import jadx.api.CCTool;
 import jadx.core.dex.nodes.ClassNode;
 import jadx.tests.api.IntegrationTest;
 
@@ -40,5 +41,7 @@ public class TestSwitchInLoop extends IntegrationTest {
 		assertThat(code, containsOne("default:"));
 		assertThat(code, containsOne("a++;"));
 		assertThat(code, containsOne("k >>= 1;"));
+
+		CCTool.printReport();
 	}
 }
