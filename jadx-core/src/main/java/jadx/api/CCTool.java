@@ -88,6 +88,13 @@ public final class CCTool {
         }
         cc.put("extractFinally@BlockFinallyExtract", extractFinallyMap);
 
+        // visit in ProcessVariables
+        HashMap<Integer, Boolean> visitProcVarsMap = new HashMap<>();
+        for (int i = 0; i < 31; i++) {
+            visitProcVarsMap.put(i, false);
+        }
+        cc.put("visit@ProcessVariables", visitProcVarsMap);
+
         initialized = true;
     }
 }
