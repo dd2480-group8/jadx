@@ -124,56 +124,56 @@ For each team member, how much time was spent in
 
 1. plenary discussions/meetings;
 - Jonathan: 3h
-- Ludvig: 
+- Ludvig: 3h
 - Michelle: -
 - Simon: 3h
 - Shapour: - 
 
 2. discussions within parts of the group;
 - Jonathan: 0.5h
-- Ludvig: 
+- Ludvig: 0.5h
 - Michelle: 0.5h
 - Simon: 0.5h
 - Shapour: 0.5h
 
 3. reading documentation;
 - Jonathan: 1h
-- Ludvig: 
+- Ludvig: 1h
 - Michelle: 1h
 - Simon: 4h
 - Shapour: 1h
 
 4. configuration;
 - Jonathan: 0.5h
-- Ludvig: 
+- Ludvig: 1h
 - Michelle: 0.5h
 - Simon: 1h
 - Shapour: -
 
 5. analyzing code/output;
 - Jonathan: 0.5h
-- Ludvig: 
+- Ludvig: 4h
 - Michelle: 2h
 - Simon: 0.5h
 - Shapour: 
 
 6. writing documentation;
 - Jonathan: 0.2h
-- Ludvig: 
+- Ludvig: 0.1h
 - Michelle: 0.5h
 - Simon: 0.5h
 - Shapour: 0.2h
 
 7. writing code;
 - Jonathan: 3h
-- Ludvig: 
+- Ludvig: 0.1h
 - Michelle: 4h
 - Simon: 4h
 - Shapour: 2h
 
 8. running code?
 - Jonathan: 1h
-- Ludvig: 
+- Ludvig: 0.1h
 - Michelle: 0.5h
 - Simon: 1h
 - Shapour: 0.5h
