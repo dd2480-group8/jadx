@@ -246,7 +246,7 @@ Method: extractFinally@BlockFinallyExtract: 79.59183673469387
 	Branch: 47: Covered
 	Branch: 48: Covered
 
-Method: mergeInternal@ArgType: 58.333333333333336
+Method: mergeInternal@ArgType: 94.44444444444444
 	Branch: 0: Covered
 	Branch: 1: Covered
 	Branch: 2: Covered
@@ -255,33 +255,33 @@ Method: mergeInternal@ArgType: 58.333333333333336
 	Branch: 5: Covered
 	Branch: 6: Covered
 	Branch: 7: Covered
-	Branch: 8: Missed
+	Branch: 8: Covered
 	Branch: 9: Covered
 	Branch: 10: Covered
 	Branch: 11: Covered
 	Branch: 12: Covered
-	Branch: 13: Missed
+	Branch: 13: Covered
 	Branch: 14: Covered
 	Branch: 15: Covered
 	Branch: 16: Covered
-	Branch: 17: Missed
+	Branch: 17: Covered
 	Branch: 18: Covered
 	Branch: 19: Covered
-	Branch: 20: Missed
+	Branch: 20: Covered
 	Branch: 21: Covered
-	Branch: 22: Missed
+	Branch: 22: Covered
 	Branch: 23: Covered
-	Branch: 24: Missed
+	Branch: 24: Covered
 	Branch: 25: Missed
-	Branch: 26: Missed
-	Branch: 27: Missed
-	Branch: 28: Missed
-	Branch: 29: Missed
-	Branch: 30: Missed
+	Branch: 26: Covered
+	Branch: 27: Covered
+	Branch: 28: Covered
+	Branch: 29: Covered
+	Branch: 30: Covered
 	Branch: 31: Missed
-	Branch: 32: Missed
+	Branch: 32: Covered
 	Branch: 33: Covered
-	Branch: 34: Missed
+	Branch: 34: Covered
 	Branch: 35: Covered
 
 Method: process@DebugInfoParser: 75.0

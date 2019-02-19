@@ -115,7 +115,7 @@ public class BlockFinallyExtract extends AbstractVisitor {
 	/**
 	 * Search and remove common code from 'catch' and 'handlers'.
 	 */
-	private static boolean extractFinally(MethodNode mth, ExceptionHandler handler) {
+	public static boolean extractFinally(MethodNode mth, ExceptionHandler handler) {
 		int count = handler.getBlocks().size();
 		BitSet bs = new BitSet(count);
 		List<BlockNode> blocks = new ArrayList<>(count);
