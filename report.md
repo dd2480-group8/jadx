@@ -109,6 +109,9 @@ Test cases added:
 |---|---|
 | [TestBadEnum.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java |
 | [TestBadSwitch.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java |
+| [TestUnknownTypes.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/types/TestUnknownTypes.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/types/TestUnknownTypes.java |
+| [TestBadHandler.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/trycatch/TestBadHandler.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/trycatch/TestBadHandler.java |
+
 
 Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
