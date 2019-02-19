@@ -30,7 +30,7 @@ public class PostTypeInference {
 					CCTool.set("process@PostTypeInference", 1);
 					long lit = litArg.getLiteral();
 					if (lit != 0) {
-						CCTool.set("process@PostTypeInference", 2);
+						CCTool.set("process@PostTypeInference", 2); // goal to reach
 						// incorrect literal value for object
 						ArgType type = lit == 1 ? ArgType.BOOLEAN : ArgType.INT;
 						// can't merge with object -> force it
@@ -82,7 +82,7 @@ public class PostTypeInference {
 					CCTool.set("process@PostTypeInference", 14);
 				}
 				if (insn.getArg(0).merge(dex, insn.getArg(1))) {
-					CCTool.set("process@PostTypeInference", 15);
+					CCTool.set("process@PostTypeInference", 15); // goal to reach
 					change = true;
 				} else {
 					CCTool.set("process@PostTypeInference", 16);
@@ -147,7 +147,7 @@ public class PostTypeInference {
 					for (InsnArg arg : insn.getArguments()) {
 						CCTool.set("process@PostTypeInference", 29);
 						if (arg.getType().isTypeKnown()) {
-							CCTool.set("process@PostTypeInference", 30);
+							CCTool.set("process@PostTypeInference", 30); // goal to reach
 							type = arg.getType();
 							break;
 						} else {
@@ -159,7 +159,7 @@ public class PostTypeInference {
 				}
 				boolean changed = false;
 				if (updateType(insn.getResult(), type)) {
-					CCTool.set("process@PostTypeInference", 33);
+					CCTool.set("process@PostTypeInference", 33); // goal to reach
 					changed = true;
 				} else {
 					CCTool.set("process@PostTypeInference", 34);
