@@ -132,28 +132,28 @@ For each team member, how much time was spent in
 - Ludvig: 
 - Michelle: 
 - Simon: 3h
-- Shapour: 
+- Shapour: - 
 
 2. discussions within parts of the group;
 - Jonathan: 0.5h
 - Ludvig: 
 - Michelle: 
 - Simon: 0.5h
-- Shapour: 
+- Shapour: 0.5h
 
 3. reading documentation;
 - Jonathan: 1h
 - Ludvig: 
 - Michelle: 
 - Simon: 4h
-- Shapour: 
+- Shapour: 1h
 
 4. configuration;
 - Jonathan: 0.5h
 - Ludvig: 
 - Michelle: 
 - Simon: 1h
-- Shapour: 
+- Shapour: -
 
 5. analyzing code/output;
 - Jonathan: 0.5h
@@ -167,21 +167,21 @@ For each team member, how much time was spent in
 - Ludvig: 
 - Michelle: 
 - Simon: 0.5h
-- Shapour: 
+- Shapour: 0.2h
 
 7. writing code;
 - Jonathan: 3h
 - Ludvig: 
 - Michelle: 
 - Simon: 4h
-- Shapour: 
+- Shapour: 2h
 
 8. running code?
 - Jonathan: 1h
 - Ludvig: 
 - Michelle: 
 - Simon: 1h
-- Shapour: 
+- Shapour: 0.5h
 
 ## Overall experience
 
