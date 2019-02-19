@@ -246,6 +246,7 @@ Method: extractFinally@BlockFinallyExtract: 79.59183673469387
 	Branch: 47: Covered
 	Branch: 48: Covered
 
+
 Method: mergeInternal@ArgType: 94.44444444444444
 	Branch: 0: Covered
 	Branch: 1: Covered

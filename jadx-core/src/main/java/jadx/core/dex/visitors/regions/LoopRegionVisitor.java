@@ -136,7 +136,7 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 		}
 		ArithNode arithNode = (ArithNode) incrInsn;
 		if (arithNode.getOp() != ArithOp.ADD) {
-			CCTool.set("checkArrayForEach@LoopRegionVisitor", 2);
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 2); // goal to reach
 			return null;
 		} else {
 			CCTool.set("checkArrayForEach@LoopRegionVisitor", 3);
@@ -159,7 +159,7 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 
 		InsnArg condArg = incrInsn.getArg(0);
 		if (!condArg.isRegister()) {
-			CCTool.set("checkArrayForEach@LoopRegionVisitor", 8);
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 8); // goal to reach
 			return null;
 		} else {
 			CCTool.set("checkArrayForEach@LoopRegionVisitor", 9);
@@ -182,7 +182,7 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 			CCTool.set("checkArrayForEach@LoopRegionVisitor", 13);
 		}
 		if (!condition.isCompare()) {
-			CCTool.set("checkArrayForEach@LoopRegionVisitor", 14);
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 14); // goal to reach
 			return null;
 		} else {
 			CCTool.set("checkArrayForEach@LoopRegionVisitor", 15);
@@ -203,7 +203,7 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 			CCTool.set("checkArrayForEach@LoopRegionVisitor", 19);
 			len = ((RegisterArg) bCondArg).getAssignInsn();
 		} else {
-			CCTool.set("checkArrayForEach@LoopRegionVisitor", 20);
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 20); // goal to reach
 			return null;
 		}
 		if (len == null || len.getType() != InsnType.ARRAY_LENGTH) {
@@ -221,7 +221,7 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 		}
 		RegisterArg iterVar = arrGetInsn.getResult();
 		if (iterVar == null) {
-			CCTool.set("checkArrayForEach@LoopRegionVisitor", 25);
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 25); // goal to reach
 			return null;
 		} else {
 			CCTool.set("checkArrayForEach@LoopRegionVisitor", 26);
@@ -241,11 +241,11 @@ public class LoopRegionVisitor extends AbstractVisitor implements IRegionVisitor
 				CCTool.set("checkArrayForEach@LoopRegionVisitor", 28);
 				wrapArg.getParentInsn().replaceArg(wrapArg, iterVar);
 			} else {
-				CCTool.set("checkArrayForEach@LoopRegionVisitor", 29);
+				CCTool.set("checkArrayForEach@LoopRegionVisitor", 29); // // goal to reach
 				LOG.debug(" checkArrayForEach: Wrapped insn not found: {}, mth: {}", arrGetInsn, mth);
 			}
 		} else {
-			CCTool.set("checkArrayForEach@LoopRegionVisitor", 30);
+			CCTool.set("checkArrayForEach@LoopRegionVisitor", 30); // goal to reach
 		}
 		return new ForEachLoop(iterVar, len.getArg(0));
 	}
