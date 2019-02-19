@@ -1,5 +1,6 @@
 package jadx.tests.integration.conditions;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -27,5 +28,7 @@ public class TestCmpOp2 extends IntegrationTest {
 
 		assertThat(code, containsString("return a > b;"));
 		assertThat(code, containsString("return ((double) c) < d;"));
+
+		CCTool.printReport();
 	}
 }

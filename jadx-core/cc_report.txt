@@ -246,8 +246,80 @@ Method: extractFinally@BlockFinallyExtract: 79.59183673469387
 	Branch: 47: Covered
 	Branch: 48: Covered
 
-Method: mergeInternal@ArgType: 91.66666666666666
+Method: mergeInternal@ArgType: 58.333333333333336
 	Branch: 0: Covered
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Covered
+	Branch: 8: Missed
+	Branch: 9: Covered
+	Branch: 10: Covered
+	Branch: 11: Covered
+	Branch: 12: Covered
+	Branch: 13: Missed
+	Branch: 14: Covered
+	Branch: 15: Covered
+	Branch: 16: Covered
+	Branch: 17: Missed
+	Branch: 18: Covered
+	Branch: 19: Covered
+	Branch: 20: Missed
+	Branch: 21: Covered
+	Branch: 22: Missed
+	Branch: 23: Covered
+	Branch: 24: Missed
+	Branch: 25: Missed
+	Branch: 26: Missed
+	Branch: 27: Missed
+	Branch: 28: Missed
+	Branch: 29: Missed
+	Branch: 30: Missed
+	Branch: 31: Missed
+	Branch: 32: Missed
+	Branch: 33: Covered
+	Branch: 34: Missed
+	Branch: 35: Covered
+
+Method: process@DebugInfoParser: 75.0
+	Branch: 0: Covered
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Missed
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Covered
+	Branch: 8: Covered
+	Branch: 9: Covered
+	Branch: 10: Covered
+	Branch: 11: Covered
+	Branch: 12: Covered
+	Branch: 13: Missed
+	Branch: 14: Covered
+	Branch: 15: Missed
+	Branch: 16: Covered
+	Branch: 17: Covered
+	Branch: 18: Missed
+	Branch: 19: Covered
+	Branch: 20: Covered
+	Branch: 21: Missed
+	Branch: 22: Missed
+	Branch: 23: Missed
+	Branch: 24: Covered
+	Branch: 25: Covered
+	Branch: 26: Missed
+	Branch: 27: Covered
+	Branch: 28: Covered
+	Branch: 29: Covered
+	Branch: 30: Covered
+	Branch: 31: Covered
+
+Method: fixTypes@ConstInlineVisitor: 86.20689655172413
+	Branch: 0: Missed
 	Branch: 1: Covered
 	Branch: 2: Covered
 	Branch: 3: Covered
@@ -265,24 +337,17 @@ Method: mergeInternal@ArgType: 91.66666666666666
 	Branch: 15: Covered
 	Branch: 16: Covered
 	Branch: 17: Covered
-	Branch: 18: Covered
+	Branch: 18: Missed
 	Branch: 19: Covered
 	Branch: 20: Covered
 	Branch: 21: Covered
 	Branch: 22: Covered
 	Branch: 23: Covered
 	Branch: 24: Covered
-	Branch: 25: Missed
+	Branch: 25: Covered
 	Branch: 26: Covered
-	Branch: 27: Covered
+	Branch: 27: Missed
 	Branch: 28: Covered
-	Branch: 29: Covered
-	Branch: 30: Covered
-	Branch: 31: Missed
-	Branch: 32: Covered
-	Branch: 33: Covered
-	Branch: 34: Covered
-	Branch: 35: Covered
 
 Method: visit@EnumVisitor: 82.5
 	Branch: 0: Covered

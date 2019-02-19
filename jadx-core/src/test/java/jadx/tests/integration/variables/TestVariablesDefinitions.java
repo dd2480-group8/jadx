@@ -1,5 +1,7 @@
 package jadx.tests.integration.variables;
 
+
+import jadx.api.CCTool;
 import java.util.List;
 
 import org.junit.Test;
@@ -41,5 +43,7 @@ public class TestVariablesDefinitions extends IntegrationTest {
 
 		assertThat(code, containsOne(indent(3) + "for (IDexTreeVisitor pass : this.passes) {"));
 		assertThat(code, not(containsString("iterator;")));
+
+		CCTool.printReport();
 	}
 }

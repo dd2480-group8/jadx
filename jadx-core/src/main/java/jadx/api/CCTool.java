@@ -118,6 +118,20 @@ public final class CCTool {
         }
         cc.put("checkArrayForEach@LoopRegionVisitor", checkArrayForEachMap);
 
+        // process in DebugInfoParser
+        HashMap<Integer, Boolean> debugInfoParserMap = new HashMap<>();
+        for (int i = 0; i < 32; i++) {
+            debugInfoParserMap.put(i, false);
+        }
+        cc.put("process@DebugInfoParser", debugInfoParserMap);
+
+        // fixTypes in ConstInlineVisitor
+        HashMap<Integer, Boolean> fixTypesMap = new HashMap<>();
+        for (int i = 0; i < 29; i++) {
+            fixTypesMap.put(i, false);
+        }
+        cc.put("fixTypes@ConstInlineVisitor", fixTypesMap);
+
         initialized = true;
     }
 }

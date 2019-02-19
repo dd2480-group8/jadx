@@ -1,5 +1,6 @@
 package jadx.tests.integration.variables;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -60,5 +61,6 @@ public class TestVariablesIfElseChain extends IntegrationTest {
 		assertThat(code, containsOne("return \"miss\";"));
 		// and compilable
 
+		CCTool.printReport();
 	}
 }

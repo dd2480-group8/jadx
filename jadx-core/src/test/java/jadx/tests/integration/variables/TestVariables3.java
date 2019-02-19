@@ -1,5 +1,6 @@
 package jadx.tests.integration.variables;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -33,5 +34,7 @@ public class TestVariables3 extends IntegrationTest {
 		assertThat(code, containsString("i = 3;"));
 		assertThat(code, containsString("s = null;"));
 		assertThat(code, containsString("return s + \" \" + i;"));
+
+		CCTool.printReport();
 	}
 }
