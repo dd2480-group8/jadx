@@ -103,6 +103,11 @@ Test cases added:
 |---|---|
 | [TestBadEnum.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/enums/TestBadEnum.java |
 | [TestBadSwitch.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/switches/TestBadSwitch.java |
+| [TestUnknownTypes.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/types/TestUnknownTypes.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/types/TestUnknownTypes.java |
+| [TestBadHandler.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/trycatch/TestBadHandler.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/trycatch/TestBadHandler.java |
+| [TestArrayForEach3.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/loops/TestArrayForEach3.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/loops/TestArrayForEach3.java |
+| [TestTypeResolver5.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java |
+
 
 Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
@@ -119,60 +124,60 @@ git diff ...
 For each team member, how much time was spent in
 
 1. plenary discussions/meetings;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 3h
+- Ludvig: 3h
+- Michelle: -
 - Simon: 3h
-- Shapour: 
+- Shapour: - 
 
 2. discussions within parts of the group;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 0.5h
+- Ludvig: 0.5h
+- Michelle: 0.5h
 - Simon: 0.5h
-- Shapour: 
+- Shapour: 0.5h
 
 3. reading documentation;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 1h
+- Ludvig: 1h
+- Michelle: 1h
 - Simon: 4h
-- Shapour: 
+- Shapour: 1h
 
 4. configuration;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 0.5h
+- Ludvig: 1h
+- Michelle: 0.5h
 - Simon: 1h
-- Shapour: 
+- Shapour: -
 
 5. analyzing code/output;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 0.5h
+- Ludvig: 4h
+- Michelle: 2h
 - Simon: 0.5h
 - Shapour: 
 
 6. writing documentation;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 0.2h
+- Ludvig: 0.1h
+- Michelle: 0.5h
 - Simon: 0.5h
-- Shapour: 
+- Shapour: 0.2h
 
 7. writing code;
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 3h
+- Ludvig: 0.1h
+- Michelle: 4h
 - Simon: 4h
-- Shapour: 
+- Shapour: 2h
 
 8. running code?
-- Jonathan: 
-- Ludvig: 
-- Michelle: 
+- Jonathan: 1h
+- Ludvig: 0.1h
+- Michelle: 0.5h
 - Simon: 1h
-- Shapour: 
+- Shapour: 0.5h
 
 ## Overall experience
 
