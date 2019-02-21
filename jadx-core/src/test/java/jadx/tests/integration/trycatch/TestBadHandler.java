@@ -1,5 +1,8 @@
 package jadx.tests.integration.trycatch;
 
+import jadx.core.dex.instructions.InsnType;
+import jadx.core.dex.nodes.BlockNode;
+import jadx.core.dex.nodes.InsnNode;
 import jadx.core.dex.trycatch.TryCatchBlock;
 import org.junit.Test;
 
@@ -27,13 +30,21 @@ public class TestBadHandler extends IntegrationTest {
 
     @Test
     public void test() {
-        ExceptionHandler test = new ExceptionHandler(5, null);
-        test.setTryBlock(new TryCatchBlock());
-        test.getTryBlock().getHandlersCount();
         ClassNode cls = getClassNode(TestCls.class);
         List<MethodNode> methods = cls.getMethods();
-        methods.get(0).addExceptionHandler(test);
-        assertFalse(BlockFinallyExtract.extractFinally(methods.get(0), test));
+        ExceptionHandler handler = new ExceptionHandler(5, null);
+        methods.get(0).addExceptionHandler(handler);
+        TryCatchBlock tcBlock = new TryCatchBlock();
+        tcBlock.addHandler(methods.get(0), 5, null);
+        tcBlock.addHandler(methods.get(0), 5, null);
+        BlockNode block = new BlockNode(5, 5);
+        List<InsnNode> instructions = block.getInstructions();
+        instructions.add(new InsnNode(InsnType.CONST, 5));
+        handler.addBlock(block);
+        handler.setTryBlock(tcBlock);
+        handler.getTryBlock().getHandlersCount();
+
+        assertFalse(BlockFinallyExtract.extractFinally(methods.get(0), handler));
         CCTool.printReport();
     }
 }

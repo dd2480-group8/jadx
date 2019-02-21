@@ -71,7 +71,7 @@ Method: makeInsnBody@InsnGen: 65.21739130434783
 	Branch: 67: Missed
 	Branch: 68: Missed
 
-Method: process@PostTypeInference: 89.74358974358975
+Method: process@PostTypeInference: 92.3076923076923
 	Branch: 0: Covered
 	Branch: 1: Covered
 	Branch: 2: Missed
@@ -87,7 +87,7 @@ Method: process@PostTypeInference: 89.74358974358975
 	Branch: 12: Covered
 	Branch: 13: Covered
 	Branch: 14: Covered
-	Branch: 15: Missed
+	Branch: 15: Covered
 	Branch: 16: Covered
 	Branch: 17: Covered
 	Branch: 18: Covered
@@ -162,7 +162,7 @@ Method: processSwitch@RegionMaker: 81.25
 	Branch: 46: Covered
 	Branch: 47: Covered
 
-Method: checkArrayForEach@LoopRegionVisitor: 80.64516129032258
+Method: checkArrayForEach@LoopRegionVisitor: 83.87096774193549
 	Branch: 0: Covered
 	Branch: 1: Covered
 	Branch: 2: Covered
@@ -193,9 +193,9 @@ Method: checkArrayForEach@LoopRegionVisitor: 80.64516129032258
 	Branch: 27: Covered
 	Branch: 28: Covered
 	Branch: 29: Missed
-	Branch: 30: Missed
+	Branch: 30: Covered
 
-Method: extractFinally@BlockFinallyExtract: 79.59183673469387
+Method: extractFinally@BlockFinallyExtract: 81.63265306122449
 	Branch: 0: Covered
 	Branch: 1: Covered
 	Branch: 2: Covered
@@ -209,7 +209,7 @@ Method: extractFinally@BlockFinallyExtract: 79.59183673469387
 	Branch: 10: Covered
 	Branch: 11: Covered
 	Branch: 12: Covered
-	Branch: 13: Missed
+	Branch: 13: Covered
 	Branch: 14: Covered
 	Branch: 15: Covered
 	Branch: 16: Covered
@@ -245,7 +245,6 @@ Method: extractFinally@BlockFinallyExtract: 79.59183673469387
 	Branch: 46: Missed
 	Branch: 47: Covered
 	Branch: 48: Covered
-
 
 Method: mergeInternal@ArgType: 94.44444444444444
 	Branch: 0: Covered
