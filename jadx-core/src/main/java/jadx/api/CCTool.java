@@ -59,12 +59,12 @@ public final class CCTool {
         // is to set that boolean to true if the branch is visited.
         cc = new HashMap<String, HashMap<Integer, Boolean>>();
 
-        // makeInsnBody in InsnGen 
+        // makeInsnBody in InsnGen
         HashMap<Integer, Boolean> makeInsnBodyMap = new HashMap<>();
         for (int i = 0; i < 69; i++) {
             makeInsnBodyMap.put(i, false);
         }
-        cc.put("makeInsnBody@InsnGen", makeInsnBodyMap);   
+        cc.put("makeInsnBody@InsnGen", makeInsnBodyMap);
 
         // processSwitch in RegionMaker
         HashMap<Integer, Boolean> processSwitchMap = new HashMap<>();
@@ -73,14 +73,13 @@ public final class CCTool {
         }
         cc.put("processSwitch@RegionMaker", processSwitchMap);
 
-        // visit in EnumVisitor 
+        // visit in EnumVisitor
         HashMap<Integer, Boolean> visitMap = new HashMap<>();
         for (int i = 0; i < 40; i++) {
             visitMap.put(i, false);
         }
         cc.put("visit@EnumVisitor", visitMap);
 
-        // TODO: Add maps for the other functions.
         // extractFinally in BlockFinallyExtract
         HashMap<Integer, Boolean> extractFinallyMap = new HashMap<>();
         for (int i = 0; i < 49; i++) {
@@ -131,6 +130,13 @@ public final class CCTool {
             fixTypesMap.put(i, false);
         }
         cc.put("fixTypes@ConstInlineVisitor", fixTypesMap);
+
+        // encodeValue in AnnotationGen;
+        HashMap<Integer, Boolean> encodeValueMap = new HashMap<>();
+        for (int i = 0; i < 19; i++) {
+            encodeValueMap.put(i, false);
+        }
+        cc.put("encodeValue@AnnotationsGen", encodeValueMap);
 
         initialized = true;
     }

@@ -1,10 +1,6 @@
 package jadx.core.codegen;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import jadx.api.CCTool;
 import jadx.core.Consts;
 import jadx.core.dex.attributes.AType;
 import jadx.core.dex.attributes.IAttributeNode;
@@ -18,6 +14,11 @@ import jadx.core.dex.nodes.FieldNode;
 import jadx.core.dex.nodes.MethodNode;
 import jadx.core.utils.StringUtils;
 import jadx.core.utils.exceptions.JadxRuntimeException;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class AnnotationGen {
 
@@ -126,48 +127,69 @@ public class AnnotationGen {
 	// TODO: refactor this boilerplate code
 	public void encodeValue(CodeWriter code, Object val) {
 		if (val == null) {
+			CCTool.set("encodeValue@AnnotationGen", 0);
 			code.add("null");
 			return;
+		} else {
+			CCTool.set("encodeValue@AnnotationGen", 1);
 		}
 		if (val instanceof String) {
+			CCTool.set("encodeValue@AnnotationGen", 2);
 			code.add(getStringUtils().unescapeString((String) val));
 		} else if (val instanceof Integer) {
+			CCTool.set("encodeValue@AnnotationGen", 3);
 			code.add(TypeGen.formatInteger((Integer) val));
 		} else if (val instanceof Character) {
+			CCTool.set("encodeValue@AnnotationGen", 4);
 			code.add(getStringUtils().unescapeChar((Character) val));
 		} else if (val instanceof Boolean) {
+			CCTool.set("encodeValue@AnnotationGen", 5);
 			code.add(Boolean.TRUE.equals(val) ? "true" : "false");
 		} else if (val instanceof Float) {
+			CCTool.set("encodeValue@AnnotationGen", 6);
 			code.add(TypeGen.formatFloat((Float) val));
 		} else if (val instanceof Double) {
+			CCTool.set("encodeValue@AnnotationGen", 7);
 			code.add(TypeGen.formatDouble((Double) val));
 		} else if (val instanceof Long) {
+			CCTool.set("encodeValue@AnnotationGen", 8);
 			code.add(TypeGen.formatLong((Long) val));
 		} else if (val instanceof Short) {
+			CCTool.set("encodeValue@AnnotationGen", 9);
 			code.add(TypeGen.formatShort((Short) val));
 		} else if (val instanceof Byte) {
+			CCTool.set("encodeValue@AnnotationGen", 10);
 			code.add(TypeGen.formatByte((Byte) val));
 		} else if (val instanceof ArgType) {
+			CCTool.set("encodeValue@AnnotationGen", 11);
 			classGen.useType(code, (ArgType) val);
 			code.add(".class");
 		} else if (val instanceof FieldInfo) {
+			CCTool.set("encodeValue@AnnotationGen", 12);
 			// must be a static field
 			FieldInfo field = (FieldInfo) val;
 			InsnGen.makeStaticFieldAccess(code, field, classGen);
 		} else if (val instanceof Iterable) {
+			CCTool.set("encodeValue@AnnotationGen", 13);
 			code.add('{');
 			Iterator<?> it = ((Iterable) val).iterator();
 			while (it.hasNext()) {
+				CCTool.set("encodeValue@AnnotationGen", 14);
 				Object obj = it.next();
 				encodeValue(code, obj);
 				if (it.hasNext()) {
+					CCTool.set("encodeValue@AnnotationGen", 15);
 					code.add(", ");
+				} else {
+					CCTool.set("encodeValue@AnnotationGen", 16);
 				}
 			}
 			code.add('}');
 		} else if (val instanceof Annotation) {
+			CCTool.set("encodeValue@AnnotationGen", 17);
 			formatAnnotation(code, (Annotation) val);
 		} else {
+			CCTool.set("encodeValue@AnnotationGen", 18);
 			// TODO: also can be method values
 			throw new JadxRuntimeException("Can't decode value: " + val + " (" + val.getClass() + ")");
 		}
