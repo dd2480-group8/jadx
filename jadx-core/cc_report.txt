@@ -424,4 +424,25 @@ Method: visit@ProcessVariables: 90.32258064516128
 	Branch: 29: Covered
 	Branch: 30: Covered
 
+Method: encodeValue@AnnotationGen: 52.63157894736842
+	Branch: 0: Missed
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Missed
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Missed
+	Branch: 8: Covered
+	Branch: 9: Missed
+	Branch: 10: Missed
+	Branch: 11: Missed
+	Branch: 12: Covered
+	Branch: 13: Covered
+	Branch: 14: Covered
+	Branch: 15: Missed
+	Branch: 16: Covered
+	Branch: 17: Missed
+	Branch: 18: Missed
+
 -----------------------------------------------------------
