@@ -1,5 +1,6 @@
 package jadx.tests.integration.annotations;
 
+import jadx.api.CCTool;
 import org.junit.Test;
 
 import jadx.core.dex.nodes.ClassNode;
@@ -61,5 +62,6 @@ public class TestAnnotations extends IntegrationTest {
 
 		assertThat(code, containsOne("int a();"));
 		assertThat(code, containsOne("float value() default 1.1f;"));
+		CCTool.printReport();
 	}
 }

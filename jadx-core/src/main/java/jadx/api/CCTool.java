@@ -132,6 +132,13 @@ public final class CCTool {
         }
         cc.put("fixTypes@ConstInlineVisitor", fixTypesMap);
 
+        // encodeValue in AnnotationGen;
+        HashMap<Integer, Boolean> encodeValueMap = new HashMap<>();
+        for (int i = 0; i < 19; i++) {
+            encodeValueMap.put(i, false);
+        }
+        cc.put("encodeValue@AnnotationGen", encodeValueMap);
+
         initialized = true;
     }
 }
