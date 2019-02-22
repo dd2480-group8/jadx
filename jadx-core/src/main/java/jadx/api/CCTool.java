@@ -136,7 +136,7 @@ public final class CCTool {
         for (int i = 0; i < 19; i++) {
             encodeValueMap.put(i, false);
         }
-        cc.put("encodeValue@AnnotationsGen", encodeValueMap);
+        cc.put("encodeValue@AnnotationGen", encodeValueMap);
 
         initialized = true;
     }
