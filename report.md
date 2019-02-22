@@ -109,7 +109,7 @@ Test cases added:
 | [TestArrayForEach3.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/loops/TestArrayForEach3.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/loops/TestArrayForEach3.java |
 | [TestTypeResolver5.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java |
 | [TestArithNeg.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/arith/TestArithNeg.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/arith/TestArithNeg.java |
-
+| [TestAnnotations3.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/annotations/TestAnnotations3.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/annotations/TestAnnotations3.java |
 
 Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
