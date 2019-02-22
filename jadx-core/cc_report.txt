@@ -1,6 +1,6 @@
 -----------------------------------------------------------
 Code Coverage Report
-Method: makeInsnBody@InsnGen: 65.21739130434783
+Method: makeInsnBody@InsnGen: 66.66666666666666
 	Branch: 0: Covered
 	Branch: 1: Covered
 	Branch: 2: Covered
@@ -11,7 +11,7 @@ Method: makeInsnBody@InsnGen: 65.21739130434783
 	Branch: 7: Covered
 	Branch: 8: Covered
 	Branch: 9: Covered
-	Branch: 10: Missed
+	Branch: 10: Covered
 	Branch: 11: Covered
 	Branch: 12: Covered
 	Branch: 13: Covered
@@ -423,5 +423,26 @@ Method: visit@ProcessVariables: 90.32258064516128
 	Branch: 28: Covered
 	Branch: 29: Covered
 	Branch: 30: Covered
+
+Method: encodeValue@AnnotationGen: 73.68421052631578
+	Branch: 0: Missed
+	Branch: 1: Covered
+	Branch: 2: Covered
+	Branch: 3: Covered
+	Branch: 4: Covered
+	Branch: 5: Covered
+	Branch: 6: Covered
+	Branch: 7: Covered
+	Branch: 8: Covered
+	Branch: 9: Covered
+	Branch: 10: Covered
+	Branch: 11: Missed
+	Branch: 12: Covered
+	Branch: 13: Covered
+	Branch: 14: Covered
+	Branch: 15: Missed
+	Branch: 16: Covered
+	Branch: 17: Missed
+	Branch: 18: Missed
 
 -----------------------------------------------------------
