@@ -110,6 +110,7 @@ Test cases added:
 | [TestTypeResolver5.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java |
 
 
+
 Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
 ## Refactoring
@@ -157,7 +158,7 @@ For each team member, how much time was spent in
 - Ludvig: 4h
 - Michelle: 2h
 - Simon: 0.5h
-- Shapour: 
+- Shapour: 8h
 
 6. writing documentation;
 - Jonathan: 0.2h
@@ -171,14 +172,14 @@ For each team member, how much time was spent in
 - Ludvig: 0.1h
 - Michelle: 4h
 - Simon: 4h
-- Shapour: 2h
+- Shapour: 4h
 
 8. running code?
 - Jonathan: 1h
 - Ludvig: 0.1h
 - Michelle: 0.5h
 - Simon: 1h
-- Shapour: 0.5h
+- Shapour: 1h
 
 ## Overall experience
 
