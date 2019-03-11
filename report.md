@@ -121,7 +121,7 @@ Plan for refactoring complex code:
 |---|---|---|---|
 | 60 | 255 | makeInsnBody@233-523@[InsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) | ... |
 | 34 | 125 | processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | Can easily be split into many small functions. It's heavily nested code and splitting it up would mean it would be easier to test different parts as well. It should be made public so it can be tested. |
-| 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | ... |
+| 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | The last two for loops could and should be split into individual functions. The checks to see if the loop should "continue" can be moved out to small functions that perform the check all-together. |
 | 31 | 119 | extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | ...  |
 | 31 | 98 | process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | ... |
 
