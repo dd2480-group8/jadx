@@ -117,9 +117,13 @@ Run above git diff commands for specific files or simply run **git diff cc cc-im
 
 Plan for refactoring complex code:
 
-Carried out refactoring (optional)
-
-git diff ...
+| Complexity | LOC | File | How to refactor |
+|---|---|---|---|
+| 60 | 255 | makeInsnBody@233-523@[InsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) | ... |
+| 34 | 125 | processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | ... |
+| 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | ... |
+| 31 | 119 | extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | ...  |
+| 31 | 98 | process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | ... |
 
 ## Effort spent
 
