@@ -107,7 +107,8 @@ Test cases added:
 | [TestBadHandler.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/trycatch/TestBadHandler.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/trycatch/TestBadHandler.java |
 | [TestArrayForEach3.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/loops/TestArrayForEach3.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/loops/TestArrayForEach3.java |
 | [TestTypeResolver5.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/types/TestTypeResolver5.java |
-
+| [TestArithNeg.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/arith/TestArithNeg.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/arith/TestArithNeg.java |
+| [TestAnnotations3.java](https://github.com/dd2480-group8/jadx/blob/cc-improve/jadx-core/src/test/java/jadx/tests/integration/annotations/TestAnnotations3.java) | git diff cc cc-improve jadx-core/src/test/java/jadx/tests/integration/annotations/TestAnnotations3.java |
 
 Run above git diff commands for specific files or simply run **git diff cc cc-improve** for the entire branch.
 
@@ -115,9 +116,13 @@ Run above git diff commands for specific files or simply run **git diff cc cc-im
 
 Plan for refactoring complex code:
 
-Carried out refactoring (optional)
-
-git diff ...
+| Complexity | LOC | File | How to refactor |
+|---|---|---|---|
+| 60 | 255 | makeInsnBody@233-523@[InsnGen.java](./jadx-core/src/main/java/jadx/core/codegen/InsnGen.java) | makeInsnBody is a function made up solely of a switch statement consisting of non-complex cases. Combined together they become complex, but since each single case is not very complex, simply extracting the code from these cases into separate functions would reduce the complexity of makeInsnBody by a great deal, as it would become a dedicated switch statement without the complicated logic of each case. Also, there are some redundancies in  the cases (e.g. the code duplication in MONITOR_ENTER and MONITOR_EXIT could be avoided by refactoring these cases into a single function that takes an input parameter of the string to add to the code). Finally, it would be a good idea to comment each extracted function thoroughly to facilitate future updates to the code.  |
+| 34 | 125 | processSwitch@700-844@[RegionMaker.java](./jadx-core/src/main/java/jadx/core/dex/visitors/regions/RegionMaker.java) | Can easily be split into many small functions. It's heavily nested code and splitting it up would mean it would be easier to test different parts as well. It should be made public so it can be tested. Some if statements can actually be merged as well, because they test the same thing. An obvious case of this is the "outs.cardinality() > 1" checks. The check "outs.cardinality() == 0" seems redundant after the other checks have been done, assuming that it will never by any other case. This "branch" could thus be removed and refactored away. |
+| 33 | 105 | visit@41-161@[EnumVisitor.java](./jadx-core/src/main/java/jadx/core/dex/visitors/EnumVisitor.java) | The last two for loops could and should be split into individual functions. The checks to see if the loop should "continue" can be moved out to small functions that perform the check all-together. |
+| 31 | 119 | extractFinally@117-254@[BlockFinallyExtract.java](./jadx-core/src/main/java/jadx/core/dex/visitors/blocksmaker/BlockFinallyExtract.java) | The methods consists of six very distinct steps and could be refactored into different methods for better testing. The first three steps in particular do not have much interaction between them in terms of the value they use and could easily be separated to facilitate testing and coverage. 
+| 31 | 98 | process@21-131@[PostTypeInference.java](./jadx-core/src/main/java/jadx/core/dex/visitors/typeinference/PostTypeInference.java) | The entire function is a long switch case, meaning that if you want to refactor it the only reasonable refactoring you can perform is to move code from individual cases into their own functions. |
 
 ## Effort spent
 
@@ -156,7 +161,7 @@ For each team member, how much time was spent in
 - Ludvig: 4h
 - Michelle: 2h
 - Simon: 0.5h
-- Shapour: 
+- Shapour: 8h
 
 6. writing documentation;
 - Jonathan: 0.2h
@@ -170,14 +175,14 @@ For each team member, how much time was spent in
 - Ludvig: 0.1h
 - Michelle: 4h
 - Simon: 4h
-- Shapour: 2h
+- Shapour: 4h
 
 8. running code?
 - Jonathan: 1h
 - Ludvig: 0.1h
 - Michelle: 0.5h
 - Simon: 1h
-- Shapour: 0.5h
+- Shapour: 1h
 
 ## Overall experience
 
